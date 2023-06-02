@@ -12,24 +12,23 @@ header{
 .menu-item, .active{
     position: relative;
     width: fit-content;
+    transition: all .25s ease; 
+    border-bottom: 2px solid transparent;
 }
-.menu-item::after {        
-    content: "";
-    background-color: whitesmoke;
-    height: 2px;
-    width: 100%;
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    transform: scaleX(0);
-    transition: all .25s ease;
+.menu-item:hover {
+    border-color: white;
 }
-.menu-item:hover::after {
-    transform: scaleX(1);
-} 
 .active::before{
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -20%;
+    top: -50%;
     content: url(../media/star-small.svg);
+    filter: drop-shadow(-5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.25));
+}
+.active::after{
+    position: absolute;
+    left: -30%;
+    bottom: -45%;
+    content: url(../media/star-small.svg);
+    filter: drop-shadow(-5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.25));
 }
