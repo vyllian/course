@@ -1,0 +1,60 @@
+.main-page 
+{
+    padding-left: 95px;
+}
+.main-page h1{
+    margin-top: 140px;
+    margin-bottom: 20px;
+}
+.main-page .container{
+    display: flex;
+    justify-content: space-between;
+    width: inherit;
+    position: relative;
+}
+.main-page .container .button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    transition: all .25s ease;
+    filter: drop-shadow(-5px 0px 5px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 5px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 5px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 5px rgba(255, 253, 253, 0.25));
+}
+.main-page .container .button-container:hover{
+    filter: drop-shadow(-5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.25));
+    transform: scale(0.98);
+
+}
+.main-page .container p{
+    width: 50%;
+    text-align: left;
+}
+.main-page .container p::after{
+    position: absolute;
+    left: -7%;
+    bottom: -35%;
+    content: url(../media/element1.svg);
+}
+
+.main-button{
+    border-radius: 15px;
+    background-color: white;
+    font-size: 32px;
+    color: black;
+    font-family: 'Italiana',serif;
+    font-weight: 400;
+    padding: 7px 19px;
+    border: none;
+}
+.main-button::before{
+    position: absolute;
+    left: 18%;
+    top: 7%;
+    content: url(../media/button-top.svg);
+}
+.main-button::after{
+    position: absolute;
+    left: 24%;
+    top: 50%;
+    content: url(../media/button-bottom.svg);
+}
