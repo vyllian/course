@@ -1,6 +1,6 @@
 .main-page 
 {
-    padding-left: 95px;
+    margin-left: 95px;
 }
 .main-page h1{
     margin-top: 140px;
@@ -25,11 +25,11 @@
     transform: scale(0.98);
 
 }
-.main-page .container p{
-    width: 50%;
+.info{
+    width: 40%;
     text-align: left;
 }
-.main-page .container p::after{
+.info::after{
     position: absolute;
     left: -7%;
     bottom: -35%;
@@ -48,13 +48,13 @@
 }
 .main-button::before{
     position: absolute;
-    left: 18%;
+    left: 22%;
     top: 7%;
     content: url(../media/button-top.svg);
 }
 .main-button::after{
     position: absolute;
-    left: 24%;
+    left: 27%;
     top: 50%;
     content: url(../media/button-bottom.svg);
 }
