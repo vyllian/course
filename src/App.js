@@ -7,6 +7,7 @@ class App extends React.Component{
     render(){
         return(
             <div>
+                <div class="noise"></div>
                 <Header/>
                 <div className="main-page page">
                     <h1>NEVIL</h1>

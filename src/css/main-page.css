@@ -48,13 +48,13 @@
 }
 .main-button::before{
     position: absolute;
-    left: 22%;
-    top: 7%;
+    left: 18%;
+    top: 14%;
     content: url(../media/button-top.svg);
 }
 .main-button::after{
     position: absolute;
-    left: 27%;
+    left: 24%;
     top: 50%;
     content: url(../media/button-bottom.svg);
 }
