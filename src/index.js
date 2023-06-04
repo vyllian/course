@@ -2,6 +2,7 @@ import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import './style.css';
 import App from './pages/App'
+import Gradient from './components/Gradient'
 import Inspiration from './pages/Inspiration';
 import Create from './pages/Create';
 import {
