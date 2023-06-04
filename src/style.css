@@ -7,6 +7,12 @@ body{
     background-color: #0D092C;
     color: white;
     padding-top: 20px;
+    background-image: radial-gradient(
+            circle farthest-side at var(--x, 100px) var(--y, 100px),
+            #3E62DC 0%,
+            #292674 50%,
+            transparent 100%
+          ), url(./media/Noise.png);
 }
 *{
     margin: 0;
