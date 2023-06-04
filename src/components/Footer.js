@@ -18,10 +18,10 @@ class Footer extends React.Component{
                     <div className='container'>
                         <img className='logo' src={logo} alt='logo'></img>
                         <div className='socials' >
-                            <img src={fbook} alt='faceboook'></img>
-                            <img src={insta} alt='instagram'></img>
-                            <img src={pint} alt='pinterest'></img>
-                            <img src={twit} alt='twitter'></img>
+                           <a href='#'><img src={fbook} alt='faceboook'></img></a> 
+                           <a href='#'><img src={insta} alt='instagram'></img></a> 
+                           <a href='#'><img src={pint} alt='pinterest'></img></a> 
+                           <a href='#'><img src={twit} alt='twitter'></img></a> 
                         </div>
                     </div>
                     <div className='navigation'>
