@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../media/logo.svg'
 import fbook from '../media/socials/Facebook - Negative.svg'
 import insta from '../media/socials/Instagram - Negative.svg'
@@ -8,8 +8,9 @@ import twit from '../media/socials/Twitter - Negative.svg'
 import lines from '../media/element2.svg'
 
 
-class Footer extends React.Component{
-    render(){
+const Footer =()=>{
+    const location = useLocation();
+    const { pathname } = location;
         return(
             <footer>
                 <div className='add'>
@@ -26,9 +27,16 @@ class Footer extends React.Component{
                         </div>
                     </div>
                     <div className='navigation'>
-                        <h3 className='active-footer'>Home</h3>
-                        <h3>Inspiration</h3>
-                        <h3>Create</h3>
+                    
+                    <h3 className={pathname === '/' ? 'active-footer' : ''}>
+                        <Link to="/">Home</Link>
+                    </h3>
+                    <h3 className={pathname === '/inspiration' ? 'active-footer' : ''}>
+                        <Link to="/inspiration">Inspiration</Link>
+                    </h3>
+                    <h3 className={pathname === '/create' ? 'active-footer' : ''}>
+                        <Link to="/create">Create</Link>
+                    </h3>
                     </div>
                     <div className='container'>
                         <p className='nevil-org'>Contact us:<br/>nevil.org@gmail.com</p>
@@ -37,7 +45,7 @@ class Footer extends React.Component{
                 </div>
             </footer>
         )
-    }
+    
 }
 
 export default Footer
