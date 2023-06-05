@@ -22,14 +22,14 @@ header{
 }
 .active::before{
     position: absolute;
-    right: -20%;
+    right: -0.5em;
     top: -50%;
     content: url(../media/star-small.svg);
     filter: drop-shadow(-5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.25));
 }
 .active::after{
     position: absolute;
-    left: -30%;
+    left: -0.7em;
     bottom: -45%;
     content: url(../media/star-small.svg);
     filter: drop-shadow(-5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.25));

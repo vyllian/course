@@ -6,7 +6,7 @@ class Create extends React.Component{
     render(){
         return(
             <div>
-                <div class="noise"></div>
+                <div className="noise"></div>
                 <Header/>
                 <div className="create-page page">
                    

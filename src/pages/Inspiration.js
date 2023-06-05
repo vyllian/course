@@ -6,7 +6,7 @@ class Inspiration extends React.Component{
     render(){
         return(
             <div>
-                <div class="noise"></div>
+                <div className="noise"></div>
                 <Header currentPage="inspiration"/>
                 <div className="create-page page">
                    
