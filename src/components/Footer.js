@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../media/logo.svg'
 import fbook from '../media/socials/Facebook - Negative.svg'
 import insta from '../media/socials/Instagram - Negative.svg'
@@ -16,7 +17,7 @@ class Footer extends React.Component{
                 </div>
                 <div className='main-footer'>
                     <div className='container'>
-                        <img className='logo' src={logo} alt='logo'></img>
+                        <Link to="/"><img src={logo} alt='logo'></img></Link>
                         <div className='socials' >
                            <a href='#'><img src={fbook} alt='faceboook'></img></a> 
                            <a href='#'><img src={insta} alt='instagram'></img></a> 

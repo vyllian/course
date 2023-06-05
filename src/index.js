@@ -16,12 +16,12 @@ const router = createBrowserRouter([
       element: <App/>,
     },
     {
-        path: "inspiration",
-        element: <Inspiration/>,
+      path: "inspiration",
+      element: <Inspiration/>,
     },
     {
-        path: "create",
-        element: <Create/>,
+      path: "create",
+      element: <Create/>,
     },
   ]);
 const app=ReactDOMClient.createRoot(document.getElementById("app"))

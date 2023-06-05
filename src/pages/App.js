@@ -1,13 +1,15 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 class App extends React.Component{
     render(){
+
         return(
             <div>
-                <div class="noise"></div>
-                <Header/>
+                <div className="noise"></div>
+                <Header currentPage="home"/>
                 <div className="main-page page">
                     <h1>NEVIL</h1>
                     <div className="container">
