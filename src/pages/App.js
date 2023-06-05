@@ -10,7 +10,7 @@ class App extends React.Component{
             <div>
                 <div className="noise"></div>
                 <Header />
-                <div className="main-page page">
+                <div className="home-page page">
                     <h1>NEVIL</h1>
                     <div className="container">
                         <p className="info">is a resource with clothes for clothes.
