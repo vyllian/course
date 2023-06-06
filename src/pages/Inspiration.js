@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import like from "../media/heart.svg"
 
 class Inspiration extends React.Component{
     render(){
@@ -55,10 +56,10 @@ class Inspiration extends React.Component{
                             <img src="" alt="outfit-image"></img>
                         </div>
                         <div className="outfit-description">
-                            <p>time</p>
+                            <time>12/aug/2003</time>
                             <div className="likes">
-                                <p></p>
-                                <img></img>
+                                <p>0</p>
+                                <button type="button"><img src={like}></img></button>
                             </div>
                         </div>
                     </div>
