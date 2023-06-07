@@ -28,6 +28,11 @@
     bottom: 90%;
     transform: scale(0.78);
 }
+.template-section{
+    display: flex;
+    flex-direction: column;
+}
+
 
 .template-bar{
     display: flex;
