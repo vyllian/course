@@ -3,6 +3,7 @@
 @import url(./css/footer.css);
 @import url(./css/inspiration-page.css);
 @import url(./css/outfit-container.css);
+@import url(./css/create-page.css);
 
 
 body{
@@ -45,6 +46,8 @@ h1{
     line-height: 86px;
     display: flex;
     align-items: center; 
+    margin-bottom:34px ;
+    margin-top: 55px;
 }
 
 p{
