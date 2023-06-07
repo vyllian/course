@@ -25,9 +25,10 @@ select{
     padding-left: 5px;
 }
 option{
-    text-align: left;
+    text-align: center;
     padding-left: 5px;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 20px;
 }
 .colors{
     border-radius: 10px;
@@ -40,24 +41,25 @@ option{
     justify-content: space-evenly;
     align-items: center;
     padding: 0 17px;
+    gap:20px
 }
 
 .color-button{
     background: none;
     border: none;
-    width: 26px;
-    height: 26px;
+    width: 25px;
+    height: 25px;
     border-radius: 50px;
     display: flex;
     justify-content:center;
     align-items: center;
 }
 .color-img {
-    width: 26px;
-    height: 26px;
+    width: 25px;
+    height: 25px;
     border-radius: 50px;
-    border: none;
+    border:2px solid rgb(221, 217, 217);
 }
 .color-img.active-col {
-    border: 2px solid black; /* Застосуйте стилі рамки за своїми потребами */
+    border-color:  black; /* Застосуйте стилі рамки за своїми потребами */
 }
