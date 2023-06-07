@@ -38,7 +38,7 @@ class Inspiration extends React.Component{
                         <div className="properties">
                             
                             <select name="style" id="style">
-                                <option selected hidden>Style</option>
+                                <option selected value="none">Style</option>
                                 <option value="casual">Casual</option>
                                 <option value="sport">Sport</option>
                                 <option value="formal">Formal</option>
@@ -50,7 +50,7 @@ class Inspiration extends React.Component{
                                 <option value="tomboy">Tomboy</option>
                             </select>
                             <select name="mood" id="mood">
-                                <option selected hidden>Mood</option>
+                                <option selected value="none">Mood</option>
                                 <option value="sportic">Sportic</option>
                                 <option value="relaxing">Relaxing</option>
                                 <option value="interesting">Interesting</option>
@@ -59,11 +59,12 @@ class Inspiration extends React.Component{
                                 <option value="cheerful">Cheerful</option>
                             </select>
                             <select name="season" id="season">
-                                <option selected hidden>Season</option>
+                                <option selected value="none">Season</option>
                                 <option value="winter">Winter</option>
-                                <option value="Spring">Spring</option>
-                                <option value="Summer">Summer</option>
-                                <option value="Autumn">Autumn</option>
+                                <option value="spring">Spring</option>
+                                <option value="summer">Summer</option>
+                                <option value="autumn">Autumn</option>
+
                             </select>
                         </div>
                         <div className="colors">
