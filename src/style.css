@@ -61,6 +61,10 @@ p{
 
 button{
     cursor: pointer;
+    border-radius: 15px;
+    font-family: 'Italiana',serif;
+    font-weight: 400;
+    border: none;
 }
 
 .noise::before{

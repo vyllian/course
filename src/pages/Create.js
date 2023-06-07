@@ -20,8 +20,8 @@ class Create extends React.Component{
 
                         </div>
                         <div className="template-bar">
-                            <button>Publish</button>
-                            <button>
+                            <button className="button-container create-button">Publish</button>
+                            <button className="button-container down-button">
                                 <img src={download} alt="download"></img>
                             </button>
                         </div>

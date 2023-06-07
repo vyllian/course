@@ -19,6 +19,14 @@
     border-radius: 20px; 
     z-index: -1;
     margin-bottom: 40px;
+    position: relative;
+}
+.creating-template::before{
+    content: url("../media/element4.svg");
+    position: absolute;
+    left: -16%;
+    bottom: 90%;
+    transform: scale(0.78);
 }
 
 .template-bar{
@@ -26,6 +34,21 @@
     gap: 30px;
     width: 1115px;
     justify-content: flex-end;
+    align-items: center;
+}
+.template-bar button{
+    filter: drop-shadow(-5px 0px 5px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 5px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 5px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 5px rgba(255, 253, 253, 0.25));
+}
+.create-button{
+    width: 212px;
+    height: 51px;
+    background-color: #FFFFFF;
+    font-size: 32px;
+    color: black;
+}
+.down-button{
+    background: none;
+    width: auto;
 }
 
 .tutor-section{
@@ -43,12 +66,6 @@
     top: 0;
     transform: scale(1.3);
     
-}
-.tutor-section::after{
-    content: url("../media/element4.svg");
-    position: absolute;
-    right: 12%;
-    bottom: -29%;
 }
 ol{
     font-family: 'Italiana';
