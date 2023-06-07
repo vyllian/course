@@ -29,12 +29,6 @@
     width: 40%;
     text-align: left;
 }
-.info::after{
-    position: absolute;
-    left: -7%;
-    bottom: -35%;
-    content: url(../media/element1.svg);
-}
 
 .main-button{
     border-radius: 15px;

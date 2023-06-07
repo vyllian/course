@@ -5,7 +5,6 @@ import fbook from '../media/socials/Facebook - Negative.svg'
 import insta from '../media/socials/Instagram - Negative.svg'
 import pint from '../media/socials/Pinterest - Negative.svg'
 import twit from '../media/socials/Twitter - Negative.svg'
-import lines from '../media/element2.svg'
 
 
 const Footer =()=>{
@@ -13,9 +12,6 @@ const Footer =()=>{
     const { pathname } = location;
         return(
             <footer>
-                <div className='add'>
-                    <img className='element' src={lines} alt='lines'></img>
-                </div>
                 <div className='main-footer'>
                     <div className='container'>
                         <Link to="/"><img src={logo} alt='logo'></img></Link>
