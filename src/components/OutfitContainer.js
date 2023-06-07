@@ -2,7 +2,6 @@ import {React, useState} from 'react'
 import like from "../media/heart.svg"
 import liked from "../media/fullheart.svg"
 
-
 const OutfitContainer =(props)=>{
     const [isLiked, setIsLiked] = useState(false);
 
