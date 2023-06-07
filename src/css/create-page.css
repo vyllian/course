@@ -17,9 +17,11 @@
     height: 713px;
     background: #FFFFFF;
     border-radius: 20px; 
-    z-index: -1;
     margin-bottom: 40px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 .creating-template::before{
     content: url("../media/element4.svg");
@@ -31,6 +33,30 @@
 .template-section{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: inherit;
+    justify-content: space-evenly;
+}
+#main-fit-section{
+    justify-content: center;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.plus-button{
+    width: 20px;
+    height: 20px;
+    background:none; 
+    display: flex;
+    justify-content:center;
+    align-items: center; 
+    z-index: 1;
+}
+.plus-button img{
+    width: 20px;
+    height: 20px;
 }
 
 

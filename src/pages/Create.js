@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import download from "../media/download.svg";
+import plus from "../media/plus.svg"
 import hat from "../media/clothes_template/beret.svg"
 import coat from "../media/clothes_template/coat.svg"
 import tshirt from "../media/clothes_template/tshirt.svg"
@@ -26,28 +27,49 @@ class Create extends React.Component{
                         <div className="creating-template">
                             <div className="template-section">
                                 <div className="item">
+                                    <button type="button" className="plus-button" >
+                                        <img src={plus} alt="add"/>
+                                    </button>
                                     <img src={hat} alt="hat"></img>
                                 </div>
                                 <div className="item">
+                                    <button type="button"className="plus-button" >
+                                        <img src={plus} alt="add"/>
+                                    </button>
                                     <img src={coat} alt="coat"></img>
                                 </div>
                             </div>
-                            <div className="template-section">
+                            <div className="template-section" id="main-fit-section">
                                 <div className="item">
+                                    <button type="button"className="plus-button" >
+                                        <img src={plus} alt="add"></img>
+                                    </button>
                                     <img src={tshirt} alt="t-shirt"></img>
                                 </div>
                                 <div className="item">
+                                    <button type="button"className="plus-button" >
+                                        <img src={plus} alt="add"></img>
+                                    </button>
                                     <img src={jeans} alt="jeans"></img>
                                 </div>
                             </div>
                             <div className="template-section">
                                 <div className="item">
+                                    <button type="button"className="plus-button" >
+                                        <img src={plus} alt="add"></img>
+                                    </button>
                                     <img src={glasses} alt="glasses"></img>
                                 </div>
                                 <div className="item">
+                                    <button type="button"className="plus-button" >
+                                        <img src={plus} alt="add"></img>
+                                    </button>
                                     <img src={bag} alt="bag"></img>
                                 </div>
                                 <div className="item">
+                                    <button type="button"className="plus-button" >
+                                        <img src={plus} alt="add"></img>
+                                    </button>
                                     <img src={shoes} alt="shoes"></img>
                                 </div>
                             </div>
