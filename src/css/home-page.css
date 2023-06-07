@@ -1,18 +1,18 @@
-.main-page 
+.home-page 
 {
     margin-left: 95px;
 }
-.main-page h1{
+.home-page h1{
     margin-top: 140px;
     margin-bottom: 20px;
 }
-.main-page .container{
+.home-page .container{
     display: flex;
     justify-content: space-between;
     width: inherit;
     position: relative;
 }
-.main-page .container .button-container{
+.home-page .container .button-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,7 @@
     transition: all .25s ease;
     filter: drop-shadow(-5px 0px 5px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 5px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 5px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 5px rgba(255, 253, 253, 0.25));
 }
-.main-page .container .button-container:hover{
+.home-page .container .button-container:hover{
     filter: drop-shadow(-5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.25));
     transform: scale(0.98);
 

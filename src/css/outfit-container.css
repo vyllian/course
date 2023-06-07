@@ -1,0 +1,48 @@
+
+.inspo-outfit-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+    position: relative;
+}
+.inspo-outfit-container::before{
+    content: url("../media/element3.svg");
+    position: absolute;
+    left: -14%;
+    top: 0;
+}
+.img-block{
+    width: 970px;
+    height: 644px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.outfit-description{
+    display: flex;
+    justify-content: space-between;
+    width: 950px;
+    margin-top: 12px;
+}
+.likes{
+    display: flex;
+    justify-content: flex-end;
+}
+.likes p {
+    font-size: 36px;
+    padding-right: 5px;
+}
+.likes button{
+    background: none;
+    border: none;
+}
+time{
+    font-family: 'Italiana';
+    font-size: 36px;
+}
+.like-button{
+    background-color: #CB0D0D;
+}
