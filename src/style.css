@@ -65,8 +65,11 @@ button{
     font-family: 'Italiana',serif;
     font-weight: 400;
     border: none;
+    transition: all .25s ease;
 }
-
+button:hover{
+    transform: scale(0.98);
+}
 .noise::before{
     position: fixed;
     top: 0;

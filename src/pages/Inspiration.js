@@ -29,6 +29,7 @@ class Inspiration extends React.Component{
             <div>
                 <div className="noise"></div>
                 <Header/>
+
                 <div className="inspiration-page page">
                     <div className="header">
                         <h1>ALL</h1>
@@ -78,6 +79,7 @@ class Inspiration extends React.Component{
                             <ColorButton color="green" colorUrl={green} />
                             <ColorButton color="purple" colorUrl={purple} />
                             <ColorButton color="red" colorUrl={red} />
+                            <ColorButton color="gray" colorUrl={gray}/>
                             <ColorButton color="black" colorUrl={black} />
 
                             <ColorButton color="floral" colorUrl={floral} />

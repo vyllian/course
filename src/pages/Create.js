@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import PublishForm from "../components/PublishForm";
+
 import download from "../media/download.svg";
 import plus from "../media/plus.svg"
 import hat from "../media/clothes_template/beret.svg"
@@ -12,12 +14,15 @@ import bag from "../media/clothes_template/bag.svg"
 import shoes from "../media/clothes_template/shoes.svg"
 
 
-class Create extends React.Component{
-    render(){
-        return(
+const Create =()=>{
+    let image="../media/clothes_template/750_0636.jpg"
+    return(
             <div>
                 <div className="noise"></div>
                 <Header/>
+                <div className="publish">
+                    <PublishForm imageUrl={image}/>
+                </div>
                 <div className="create-page page">
                     <div className="header-pow">
                         <h1>ADD CLOTHES TO THE TEMPLATE</h1>
@@ -75,7 +80,7 @@ class Create extends React.Component{
                             </div>
                         </div>
                         <div className="template-bar">
-                            <button className="button-container create-button">Publish</button>
+                            <button className="button-container create-button" onClick={}>Publish</button>
                             <button className="button-container down-button">
                                 <img src={download} alt="download"></img>
                             </button>
@@ -97,8 +102,8 @@ class Create extends React.Component{
                 </div>
                 <Footer/>
             </div>
-        )
-    }
+    )
+    
 }
 
 export default Create
