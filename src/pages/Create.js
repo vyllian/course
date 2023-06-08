@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PublishForm from "../components/PublishForm";
+import ClothesSearch from "../components/ClothesSearch";
 
 import download from "../media/download.svg";
 import plus from "../media/plus.svg"
@@ -16,12 +17,15 @@ import shoes from "../media/clothes_template/shoes.svg"
 
 const Create =()=>{
     let image="../media/clothes_template/750_0636.jpg"
+    
     return(
             <div>
                 <div className="noise"></div>
                 <Header/>
-                <div className="publish">
-                    <PublishForm imageUrl={image}/>
+                <div className="window">
+                    {/* <PublishForm imageUrl={image}/> */}
+                    <ClothesSearch/>
+
                 </div>
                 <div className="create-page page">
                     <div className="header-pow">
@@ -80,7 +84,7 @@ const Create =()=>{
                             </div>
                         </div>
                         <div className="template-bar">
-                            <button className="button-container create-button" onClick={}>Publish</button>
+                            <button className="button-container create-button">Publish</button>
                             <button className="button-container down-button">
                                 <img src={download} alt="download"></img>
                             </button>

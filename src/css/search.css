@@ -1,0 +1,31 @@
+.search-container{
+    width: 900px;
+    height: 387px;
+    background: #D9D9D9;
+    border-radius: 20px;
+    padding: 15px 17px 23px;
+
+}
+.search-filter{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 23px;
+
+}
+.search-filter .colors{
+    margin: 0;
+}
+.exit-button-search{
+    width: 18px;
+    height: 18px;
+    background: none;
+    border: none;
+}
+.outfit-card{
+    width: 169.48px;
+    height: 150px;
+    background: #FFFFFF;
+    border: 1px solid #9A9A9A;
+    border-radius: 10px;
+}

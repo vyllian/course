@@ -20,6 +20,7 @@ import yellow from "../media/colors/yellow.png"
 import exit from "../media/exit.svg"
 
 const PublishForm =(props)=>{
+    
     return(
         <div className="publish-template">
             <div className='exit'>
@@ -79,7 +80,7 @@ const PublishForm =(props)=>{
                     <option value="sad">Sad</option>
                     <option value="cheerful">Cheerful</option>
                 </select>
-                <button className='publish-button'>Publish</button>
+                <button className='publish-button' >Publish</button>
             </div>
         </div>
     )

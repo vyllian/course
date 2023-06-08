@@ -21,6 +21,7 @@ select{
     font-family: 'Italiana';
     font-weight: 600;
     padding-left: 5px;
+    border: none;
 }
 option{
     text-align: center;
