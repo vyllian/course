@@ -1,0 +1,22 @@
+.outfit-card{
+    width: 175px;
+    height: 175px;
+    background: #fff;
+    border: 1px solid #9A9A9A;
+    border-radius: 10px;
+}
+.carousel-item{
+    display: flex;
+    width: 900px;
+    justify-content: center;
+    gap: 40px;
+}
+.carousel-indicators{
+    bottom: -25%;
+}
+.carousel-control-prev {
+    left: -7%;
+}
+.carousel-control-next {
+    right: -7%;
+}
