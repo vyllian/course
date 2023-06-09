@@ -1,6 +1,5 @@
 
 .publish-template{
-    width: 370px;
     height: 473px;
     background: #0D092C;
     border: none;
@@ -21,8 +20,11 @@
     border-radius: 20px;
     margin-top: 18px;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.exit-button{
+.publish-template .exit-button{
     width: 18px;
     height: 18px;
     background: none;

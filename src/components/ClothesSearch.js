@@ -1,6 +1,6 @@
 import {React} from 'react'
 import ColorButton from './ColorButton'
-import ItemCard from './ItemCard'
+import ItemCard from './ItemCards'
 import Slider from './Slider'
 
 import animal from "../media/colors/animal.jpg"

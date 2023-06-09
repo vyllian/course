@@ -23,8 +23,8 @@ const Create =()=>{
                 <div className="noise"></div>
                 <Header/>
                 <div className="window">
-                    {/* <PublishForm imageUrl={image}/> */}
-                    <ClothesSearch/>
+                    <PublishForm imageUrl={image}/>
+                    {/* <ClothesSearch/> */}
 
                 </div>
                 <div className="create-page page">

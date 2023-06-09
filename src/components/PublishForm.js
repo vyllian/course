@@ -28,7 +28,9 @@ const PublishForm =(props)=>{
                     <img className='exit-img' src={exit} alt='exit'></img>
                 </button>
             </div>
-            <img className='publish-img' src={props.imageUrl} alt='your outfit' ></img>
+            <div className='publish-img'>
+                <img  src={props.imageUrl} alt='your outfit' ></img>
+           </div>
             <div className='colors'>
                 <ColorButton color="white" colorUrl={white} />
                 <ColorButton color="beige" colorUrl={beige} />
