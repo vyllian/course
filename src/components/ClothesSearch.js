@@ -1,7 +1,5 @@
-import {React} from 'react'
+import {React, useState} from 'react'
 import ColorButton from './ColorButton'
-import ItemCard from './ItemCards'
-import Slider from './Slider'
 
 import animal from "../media/colors/animal.jpg"
 import beige from "../media/colors/beige.png"
@@ -21,8 +19,10 @@ import white from "../media/colors/white.jpg"
 import yellow from "../media/colors/yellow.png"
 import exit from "../media/exit2.svg"
 
+const mock=[{imageUrl:animal}, {imageUrl:beige},{imageUrl:red},{imageUrl:black},{imageUrl:yellow}, {imageUrl:pink},{imageUrl:purple}]
 
 const ClothesSearch =()=>{
+    const [data, setData]=useState(mock);
         return(
             <div className="search-container">
                 <div className='search-filter'>
@@ -54,8 +54,21 @@ const ClothesSearch =()=>{
                         </button>
                
                 </div> 
-                <Slider/>
-        
+                <div className='col-md-11 items-panel'>
+                    <div className="row">
+                        {data.map((values)=>{
+                            return(
+                                <div className='col-md-3 mb-4'>
+                                    <div className="outfit-card">
+                                        <button type='button'>
+                                            <img src={values.imageUrl}></img>
+                                        </button>
+                                    </div>
+                                </div>
+                            )
+                        })} 
+                    </div>
+                </div>
         </div>
     )
     

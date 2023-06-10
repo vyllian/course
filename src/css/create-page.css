@@ -1,11 +1,22 @@
-.window{
-    display: flex;
+.publish-window{
+    display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 5;
+    padding: 18px 63px 39px;
+}
+.search-window{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,0);
     z-index: 5;
     padding: 18px 63px 39px;
 }

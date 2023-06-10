@@ -16,17 +16,18 @@ import shoes from "../media/clothes_template/shoes.svg"
 
 
 const Create =()=>{
-    let image="../media/clothes_template/750_0636.jpg"
-    
     return(
             <div>
                 <div className="noise"></div>
                 <Header/>
-                <div className="window">
-                    <PublishForm imageUrl={image}/>
-                    {/* <ClothesSearch/> */}
-
+                <div className="publish-window">
+                    <PublishForm imageUrl={glasses}/>
+                    
                 </div>
+                <div className="search-window">{
+                    <ClothesSearch/>
+                }
+                </div> 
                 <div className="create-page page">
                     <div className="header-pow">
                         <h1>ADD CLOTHES TO THE TEMPLATE</h1>
