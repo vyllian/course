@@ -1,4 +1,4 @@
-import {React} from 'react'
+import {React, useState, useEffect} from 'react'
 import ColorButton from './ColorButton'
 
 import animal from "../media/colors/animal.jpg"
@@ -19,12 +19,21 @@ import white from "../media/colors/white.jpg"
 import yellow from "../media/colors/yellow.png"
 import exit from "../media/exit.svg"
 
+
 const PublishForm =(props)=>{
-    
+    const [formVisible, setFormVisible] = useState(props.style);
+
+    useEffect(() => {
+        setFormVisible(props.style);
+      }, [props.style]);
+      
+    const closePubForm = () => {
+      setFormVisible(false);
+    };
     return(
-        <div className="publish-template">
+        <div className="publish-template" style={{visibility: formVisible ? 'visible' : 'hidden'}}>
             <div className='exit'>
-                <button className='exit-button'>
+                <button className='exit-button'onClick={closePubForm}>
                     <img className='exit-img' src={exit} alt='exit'></img>
                 </button>
             </div>

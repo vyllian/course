@@ -1,5 +1,5 @@
 .publish-window{
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -8,9 +8,10 @@
     transform: translate(-50%, -50%);
     z-index: 5;
     padding: 18px 63px 39px;
+    visibility: hidden;
 }
 .search-window{
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -19,6 +20,7 @@
     transform: translate(-50%,0);
     z-index: 5;
     padding: 18px 63px 39px;
+    visibility: hidden;
 }
 .header-pow{
     display: flex;

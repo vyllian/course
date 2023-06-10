@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState }from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PublishForm from "../components/PublishForm";
@@ -15,18 +15,28 @@ import bag from "../media/clothes_template/bag.svg"
 import shoes from "../media/clothes_template/shoes.svg"
 
 
+
 const Create =()=>{
+    const [isPubVis, setisPubVis] = useState(false);
+    const [isSchVis, setisSchVis] = useState(false);
+    const handleClick = () => {
+        setisPubVis(current => !current);
+    };
+    const openSearchForm = ()=>{
+        setisSchVis(current => !current);
+    }
+
+    
     return(
             <div>
                 <div className="noise"></div>
                 <Header/>
-                <div className="publish-window">
-                    <PublishForm imageUrl={glasses}/>
+                <div className="publish-window" >
+                    <PublishForm imageUrl={glasses} style={isPubVis}/>
                     
                 </div>
-                <div className="search-window">{
-                    <ClothesSearch/>
-                }
+                <div className="search-window">
+                    <ClothesSearch style={isSchVis}/>
                 </div> 
                 <div className="create-page page">
                     <div className="header-pow">
@@ -37,13 +47,13 @@ const Create =()=>{
                         <div className="creating-template">
                             <div className="template-section">
                                 <div className="item">
-                                    <button type="button" className="plus-button" >
+                                    <button type="button" className="plus-button" onClick={openSearchForm} >
                                         <img src={plus} alt="add"/>
                                     </button>
                                     <img src={hat} alt="hat"></img>
                                 </div>
                                 <div className="item">
-                                    <button type="button"className="plus-button" >
+                                    <button type="button"className="plus-button" onClick={openSearchForm}>
                                         <img src={plus} alt="add"/>
                                     </button>
                                     <img src={coat} alt="coat"></img>
@@ -51,13 +61,13 @@ const Create =()=>{
                             </div>
                             <div className="template-section" id="main-fit-section">
                                 <div className="item">
-                                    <button type="button"className="plus-button" >
+                                    <button type="button"className="plus-button" onClick={openSearchForm}>
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={tshirt} alt="t-shirt"></img>
                                 </div>
                                 <div className="item">
-                                    <button type="button"className="plus-button" >
+                                    <button type="button"className="plus-button" onClick={openSearchForm}>
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={jeans} alt="jeans"></img>
@@ -65,19 +75,19 @@ const Create =()=>{
                             </div>
                             <div className="template-section">
                                 <div className="item">
-                                    <button type="button"className="plus-button" >
+                                    <button type="button"className="plus-button" onClick={openSearchForm}>
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={glasses} alt="glasses"></img>
                                 </div>
                                 <div className="item">
-                                    <button type="button"className="plus-button" >
+                                    <button type="button"className="plus-button"onClick={openSearchForm} >
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={bag} alt="bag"></img>
                                 </div>
                                 <div className="item">
-                                    <button type="button"className="plus-button" >
+                                    <button type="button"className="plus-button" onClick={openSearchForm} >
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={shoes} alt="shoes"></img>
@@ -85,7 +95,7 @@ const Create =()=>{
                             </div>
                         </div>
                         <div className="template-bar">
-                            <button className="button-container create-button">Publish</button>
+                            <button className="button-container create-button"onClick={handleClick}>Publish</button>
                             <button className="button-container down-button">
                                 <img src={download} alt="download"></img>
                             </button>

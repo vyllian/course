@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import ColorButton from './ColorButton'
 
 import animal from "../media/colors/animal.jpg"
@@ -21,10 +21,19 @@ import exit from "../media/exit2.svg"
 
 const mock=[{imageUrl:animal}, {imageUrl:beige},{imageUrl:red},{imageUrl:black},{imageUrl:yellow}, {imageUrl:pink},{imageUrl:purple}]
 
-const ClothesSearch =()=>{
+const ClothesSearch =(props)=>{
     const [data, setData]=useState(mock);
+    const [formVisible, setFormVisible] = useState(props.style);
+
+    useEffect(() => {
+        setFormVisible(props.style);
+      }, [props.style]);
+      
+    const closeSearchForm = () => {
+      setFormVisible(false);
+    };
         return(
-            <div className="search-container">
+            <div className="search-container" style={{visibility: formVisible ? 'visible' : 'hidden'}}>
                 <div className='search-filter'>
                     <select name="type">
                         <option selected value="none">Type</option>
@@ -49,7 +58,7 @@ const ClothesSearch =()=>{
                             <ColorButton color="animal" colorUrl={animal} />                           
                     </div>
                    
-                        <button className='exit-button-search'>
+                        <button className='exit-button-search' onClick={closeSearchForm}>
                             <img className='exit-img' src={exit} alt='exit'></img>
                         </button>
                
