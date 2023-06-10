@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import OutfitContainer from "../components/OutfitContainer";
@@ -21,14 +21,16 @@ import striped from "../media/colors/striped.jpg"
 import white from "../media/colors/white.jpg"
 import yellow from "../media/colors/yellow.png"
 
-class Inspiration extends React.Component{
+const mock=[{date:"1/dec/18", likes:20, imageUrl:yellow},{date:"1/dec/18", likes:20, imageUrl:pink},{date:"1/dec/18", likes:20, imageUrl:purple},{date:"1/dec/18", likes:20, imageUrl:black},{date:"1/dec/18", likes:20, imageUrl:yellow},{date:"1/dec/18", likes:20, imageUrl:blue},{date:"1/dec/18", likes:20, imageUrl:animal},{date:"1/dec/18", likes:20, imageUrl:floral}]
 
-    render(){
-        
-        return(
+const Inspiration =()=>{
+    const[data,setData]=useState(mock);
+    
+    return(
             <div>
                 <div className="noise"></div>
                 <Header/>
+
                 <div className="inspiration-page page">
                     <div className="header">
                         <h1>ALL</h1>
@@ -78,6 +80,7 @@ class Inspiration extends React.Component{
                             <ColorButton color="green" colorUrl={green} />
                             <ColorButton color="purple" colorUrl={purple} />
                             <ColorButton color="red" colorUrl={red} />
+                            <ColorButton color="gray" colorUrl={gray}/>
                             <ColorButton color="black" colorUrl={black} />
 
                             <ColorButton color="floral" colorUrl={floral} />
@@ -87,13 +90,20 @@ class Inspiration extends React.Component{
                                                         
                         </div>
                     </div>
-                    <OutfitContainer imageUrl={"../media/heart.svg"} data={"23/dec/2023"} likes={1000}/>
+                    <div className='col-md-12'>
+                            {data.map((values)=>{
+                                return(
+                                    <OutfitContainer imageUrl={values.imageUrl} date={values.date} likes={values.likes}/>
+
+                                )
+                            })} 
+                    </div>
 
                 </div>
                 <Footer/>
             </div>
-        )
-    }
+    )
+    
 }
 
 export default Inspiration

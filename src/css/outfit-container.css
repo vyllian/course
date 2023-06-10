@@ -10,7 +10,7 @@
     content: url("../media/element3.svg");
     position: absolute;
     left: -14%;
-    top: 0;
+    bottom: 0;
 }
 .img-block{
     width: 970px;
@@ -21,6 +21,12 @@
     justify-content: center;
     align-items: center;
 }
+.img-block img{
+    object-fit: contain;
+    width: 750px;
+    height: 525px;
+}
+
 .outfit-description{
     display: flex;
     justify-content: space-between;

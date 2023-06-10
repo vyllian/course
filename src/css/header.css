@@ -20,14 +20,14 @@ header{
 .menu-item:hover {
     border-color: white;
 }
-.active::before{
+.active-menu::before{
     position: absolute;
     right: -0.5em;
     top: -50%;
     content: url(../media/star-small.svg);
     filter: drop-shadow(-5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(5px 0px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px -5px 10px rgba(255, 255, 255, 0.25)) drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.25));
 }
-.active::after{
+.active-menu::after{
     position: absolute;
     left: -0.7em;
     bottom: -45%;

@@ -3,7 +3,9 @@
 @import url(./css/footer.css);
 @import url(./css/inspiration-page.css);
 @import url(./css/outfit-container.css);
-
+@import url(./css/create-page.css);
+@import url(./css/publish-form.css);
+@import url(./css/search.css);
 
 body{
     background-color: #0D092C;
@@ -12,9 +14,9 @@ body{
     background-image: radial-gradient(
             circle farthest-side at var(--x, 100px) var(--y, 100px),
             #4260c4 0%,
-            #292674 50%,
             transparent 100%
           );
+    background-attachment: fixed;
 }
 *{
     margin: 0;
@@ -45,6 +47,8 @@ h1{
     line-height: 86px;
     display: flex;
     align-items: center; 
+    margin-bottom:34px ;
+    margin-top: 55px;
 }
 
 p{
@@ -58,8 +62,15 @@ p{
 
 button{
     cursor: pointer;
+    border-radius: 15px;
+    font-family: 'Italiana',serif;
+    font-weight: 400;
+    border: none;
+    transition: all .25s ease;
 }
-
+button:hover{
+    transform: scale(0.98);
+}
 .noise::before{
     position: fixed;
     top: 0;
@@ -72,7 +83,7 @@ button{
     z-index: 1000;
     pointer-events: none;
     background: url(./media/Noise.png) ;
-    z-index: -1;
+    z-index: -5;
 }
 
 a{

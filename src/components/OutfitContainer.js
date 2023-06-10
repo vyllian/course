@@ -15,7 +15,7 @@ const OutfitContainer =(props)=>{
                     <img src={props.imageUrl} alt="outfit-image"></img>
                 </div>
                 <div className="outfit-description">
-                    <time>{props.data}</time>
+                    <time>{props.date}</time>
                     <div className="likes">
                         <p>{props.likes}</p>
                         <button type="button" onClick={toggleLike} id='like-button'>

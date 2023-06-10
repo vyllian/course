@@ -5,7 +5,6 @@ import fbook from '../media/socials/Facebook - Negative.svg'
 import insta from '../media/socials/Instagram - Negative.svg'
 import pint from '../media/socials/Pinterest - Negative.svg'
 import twit from '../media/socials/Twitter - Negative.svg'
-import lines from '../media/element2.svg'
 
 
 const Footer =()=>{
@@ -13,12 +12,9 @@ const Footer =()=>{
     const { pathname } = location;
         return(
             <footer>
-                <div className='add'>
-                    <img className='element' src={lines} alt='lines'></img>
-                </div>
                 <div className='main-footer'>
                     <div className='container'>
-                        <Link to="/"><img src={logo} alt='logo'></img></Link>
+                        <Link to="/" onClick={() => {window.scroll(0, 0);}}><img src={logo} alt='logo'></img></Link>
                         <div className='socials' >
                            <a href='#'><img src={fbook} alt='faceboook'></img></a> 
                            <a href='#'><img src={insta} alt='instagram'></img></a> 
@@ -29,13 +25,13 @@ const Footer =()=>{
                     <div className='navigation'>
                     
                     <h3 className={pathname === '/' ? 'active-footer' : ''}>
-                        <Link to="/">Home</Link>
+                        <Link to="/" onClick={() => {window.scroll(0, 0);}}>Home</Link>
                     </h3>
                     <h3 className={pathname === '/inspiration' ? 'active-footer' : ''}>
-                        <Link to="/inspiration">Inspiration</Link>
+                        <Link to="/inspiration" onClick={() => {window.scroll(0, 0);}}>Inspiration</Link>
                     </h3>
                     <h3 className={pathname === '/create' ? 'active-footer' : ''}>
-                        <Link to="/create">Create</Link>
+                        <Link to="/create" onClick={() => {window.scroll(0, 0);}}>Create</Link>
                     </h3>
                     </div>
                     <div className='container'>
