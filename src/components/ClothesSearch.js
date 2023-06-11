@@ -19,24 +19,62 @@ import white from "../media/colors/white.jpg"
 import yellow from "../media/colors/yellow.png"
 import exit from "../media/exit2.svg"
 
-const mock=[{imageUrl:animal}, {imageUrl:beige},{imageUrl:red},{imageUrl:black},{imageUrl:yellow}, {imageUrl:pink},{imageUrl:purple}]
 
 const ClothesSearch =(props)=>{
-    const [data, setData]=useState(mock);
+    const [clothes, setClothes]=useState([]);
     const [formVisible, setFormVisible] = useState(props.style);
+    const [selected, setSelected] = useState('');
+    const [fileBase64String, setFileBase64String] = useState('');
 
     useEffect(() => {
         setFormVisible(props.style);
-      }, [props.style]);
+    }, [props.style]);
+    
+    useEffect(()=>{
+        fetch("http://localhost:8080/accessories")
+        .then(res=>res.json())
+        .then((result)=>{
+            setClothes(result);
+        })
+    },[]);
+    
       
     const closeSearchForm = () => {
       setFormVisible(false);
     };
+    const selectValue=(event)=>{
+        const selectedValue = event.target.value
+        setSelected(selectedValue)
+    }
+   
+    const getOptionsByType = () => {
+        switch (props.type) {
+            case 'shoes':
+                return ['Footwear','Shoes','Heels', 'Sneakers', 'Boots','Sandals'];
+            case 'hat':
+                return ['Accessory','Hat', 'Belt','Bodychain','Gloves','Neckerchives','Socks','Tights'];
+            case 'bag':
+                return ['Accessory','Bag', 'Belt','Bodychain','Gloves','Neckerchives','Socks','Tights'];
+            case 'glasses':
+                return ['Accessory','Glasses', 'Belt','Bodychain','Gloves','Neckerchives','Socks','Tights'];
+            case 'top':
+                return ['Top','Bra','Cardigan','Croptop','Hoodie','Jumper','Longsleve','Shirt','Tanktop','T-shirt','Vest','Dress','Jumpsuit']  ;
+            case 'bottom':
+                return ['Bottom','Pants','Jeans','Shorts','Skirt','Dress','Jumpsuit'] 
+            case 'otter wear':
+                return ['Otter','Blazer', 'Coat']
+          default:
+            return [];
+        }
+    };
+
         return(
             <div className="search-container" style={{visibility: formVisible ? 'visible' : 'hidden'}}>
                 <div className='search-filter'>
-                    <select name="type">
-                        <option selected value="none">Type</option>
+                    <select name="type"onChange={selectValue}>
+                        {getOptionsByType().map((option)=>(
+                            <option key={option} value={option} >{option}</option>
+                        ))}
                     </select>
                     <div className='colors'>
                             <ColorButton color="white" colorUrl={white} />
@@ -65,12 +103,13 @@ const ClothesSearch =(props)=>{
                 </div> 
                 <div className='col-md-11 items-panel'>
                     <div className="row">
-                        {data.map((values)=>{
+                        {clothes.map((values)=>{
+                            
                             return(
                                 <div className='col-md-3 mb-4'>
                                     <div className="outfit-card">
                                         <button type='button'>
-                                            <img src={values.imageUrl}></img>
+                                            <img src={values.image}></img>
                                         </button>
                                     </div>
                                 </div>
