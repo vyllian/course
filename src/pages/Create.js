@@ -19,11 +19,13 @@ import shoes from "../media/clothes_template/shoes.svg"
 const Create =()=>{
     const [isPubVis, setisPubVis] = useState(false);
     const [isSchVis, setisSchVis] = useState(false);
+    const [type, setType] = useState("type");
     const handleClick = () => {
         setisPubVis(current => !current);
     };
-    const openSearchForm = ()=>{
+    const openSearchForm = (plusType)=>{
         setisSchVis(current => !current);
+        setType(plusType);
     }
 
     
@@ -36,7 +38,7 @@ const Create =()=>{
                     
                 </div>
                 <div className="search-window">
-                    <ClothesSearch style={isSchVis}/>
+                    <ClothesSearch style={isSchVis} type={type}/>
                 </div> 
                 <div className="create-page page">
                     <div className="header-pow">
@@ -47,13 +49,13 @@ const Create =()=>{
                         <div className="creating-template">
                             <div className="template-section">
                                 <div className="item">
-                                    <button type="button" className="plus-button" onClick={openSearchForm} >
+                                    <button type="button" className="plus-button" onClick={() => openSearchForm("hat")} >
                                         <img src={plus} alt="add"/>
                                     </button>
                                     <img src={hat} alt="hat"></img>
                                 </div>
                                 <div className="item">
-                                    <button type="button"className="plus-button" onClick={openSearchForm}>
+                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("otter wear")}>
                                         <img src={plus} alt="add"/>
                                     </button>
                                     <img src={coat} alt="coat"></img>
@@ -61,13 +63,13 @@ const Create =()=>{
                             </div>
                             <div className="template-section" id="main-fit-section">
                                 <div className="item">
-                                    <button type="button"className="plus-button" onClick={openSearchForm}>
+                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("top")}>
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={tshirt} alt="t-shirt"></img>
                                 </div>
                                 <div className="item">
-                                    <button type="button"className="plus-button" onClick={openSearchForm}>
+                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("bottom")}>
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={jeans} alt="jeans"></img>
@@ -75,19 +77,19 @@ const Create =()=>{
                             </div>
                             <div className="template-section">
                                 <div className="item">
-                                    <button type="button"className="plus-button" onClick={openSearchForm}>
+                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("glasses")}>
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={glasses} alt="glasses"></img>
                                 </div>
                                 <div className="item">
-                                    <button type="button"className="plus-button"onClick={openSearchForm} >
+                                    <button type="button"className="plus-button"onClick={()=>openSearchForm("bag")} >
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={bag} alt="bag"></img>
                                 </div>
                                 <div className="item">
-                                    <button type="button"className="plus-button" onClick={openSearchForm} >
+                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("shoes")} >
                                         <img src={plus} alt="add"></img>
                                     </button>
                                     <img src={shoes} alt="shoes"></img>

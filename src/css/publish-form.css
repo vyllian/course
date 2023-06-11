@@ -1,6 +1,6 @@
 
 .publish-template{
-    height: 473px;
+    height: fit-content;
     background: #0D092C;
     border: none;
     border-radius: 20px;
@@ -23,6 +23,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.publish-img img{
+    object-fit: contain;
+    height: 250px;
+     width: 300px;
 }
 .publish-template .exit-button{
     width: 18px;
