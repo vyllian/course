@@ -23,6 +23,7 @@ const Create =()=>{
     const [isSchVis, setisSchVis] = useState(false);
     const [downloadBut, setDownloadBut]=useState(false)
     const [type, setType] = useState("type");
+    const [imgToPub, setImgToPub]=useState('');
 
     const [selectedImageHat, setSelectedImageHat] = useState(null);
     const [selectedImageShoes, setSelectedImageShoes] = useState(null);
@@ -66,14 +67,36 @@ const Create =()=>{
         }
 
     };
-    const handleClick = () => {
-        setisPubVis(current => !current);
+    const closePubForm = () => {
+        setisPubVis(false);
+      };
+    const pressPublish = () => {
+        setisPubVis(true);
     };
+    useEffect(()=>{
+        if(isPubVis){
+            publish();
+        }
+    },[isPubVis])
+
+    const publish=()=>{
+         setDownloadBut(true)
+        setTimeout(()=> imgForming(), 500)
+         
+       
+        setTimeout(( ) => setDownloadBut(false), 500);
+    }
+    const imgForming =async()=>{
+        await html2canvas(document.querySelector("#capture")).then(canvas=>{
+            const image = canvas.toDataURL("image/png");
+            setImgToPub(image);
+        });
+    }
+
     const openSearchForm = (plusType)=>{
         setisSchVis(current => !current);
         setType(plusType);
     }
-
     const showBin = (where) => {
         switch (where){
             case 'hat':
@@ -139,11 +162,9 @@ const Create =()=>{
         setTimeout(() =>  download() , 500);
        setTimeout(( ) => setDownloadBut(false), 500);
     }
-   
     const download = async()=>{
         await html2canvas(document.querySelector("#capture")).then(canvas => {
             let image = canvas.toDataURL("image/png");
-            console.log(image)
             let link = document.createElement("a");
             link.href = image;
             link.download = "outfit.png";
@@ -156,7 +177,7 @@ const Create =()=>{
                 <div className="noise"></div>
                 <Header/>
                 <div className="publish-window" >
-                    <PublishForm imageUrl={glasses} style={isPubVis}/>
+                    <PublishForm imageUrl={imgToPub} isPubVis={isPubVis} closePubForm={closePubForm}/>
                     
                 </div>
                 <div className="search-window">
@@ -255,7 +276,7 @@ const Create =()=>{
                             </div>
                         </div>
                         <div className="template-bar">
-                            <button className="button-container create-button"onClick={handleClick}>Publish</button>
+                            <button className="button-container create-button"onClick={pressPublish}>Publish</button>
                             <button className="button-container down-button" onClick={pressDownload}>
                                 <img src={downloadIcon} alt="download"></img>
                             </button>

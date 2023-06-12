@@ -21,17 +21,23 @@ import exit from "../media/exit.svg"
 
 
 const PublishForm =(props)=>{
-    const [formVisible, setFormVisible] = useState(props.style);
+    const { imageUrl, isPubVis, closePubForm } = props;
 
     useEffect(() => {
-        setFormVisible(props.style);
-      }, [props.style]);
-      
-    const closePubForm = () => {
-      setFormVisible(false);
+      setFormVisible(isPubVis);
+    }, [isPubVis]);
+  
+    const setFormVisible = (visible) => {
+      document.body.style.overflow = visible ? "hidden" : "auto";
     };
+  
+    const handlePublish = () => {
+        closePubForm();
+      // Perform publishing logic here
+    };
+    
     return(
-        <div className="publish-template" style={{visibility: formVisible ? 'visible' : 'hidden'}}>
+        <div className="publish-template" style={{visibility: isPubVis  ? 'visible' : 'hidden'}}>
             <div className='exit'>
                 <button className='exit-button'onClick={closePubForm}>
                     <img className='exit-img' src={exit} alt='exit'></img>
@@ -91,7 +97,7 @@ const PublishForm =(props)=>{
                     <option value="sad">Sad</option>
                     <option value="cheerful">Cheerful</option>
                 </select>
-                <button className='publish-button' >Publish</button>
+                <button className='publish-button' onClick={handlePublish}>Publish</button>
             </div>
         </div>
     )
