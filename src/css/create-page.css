@@ -69,6 +69,9 @@
     flex-direction: column;
     align-items: flex-end;
 }
+.item img{
+    object-fit: contain;
+}
 .plus-button{
     width: 20px;
     height: 20px;
@@ -128,4 +131,7 @@ ol{
     text-align: center;
     list-style-position: inside;
     width: 830px;
+}
+.hat img{
+    width: 135px;
 }

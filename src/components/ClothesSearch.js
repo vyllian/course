@@ -19,33 +19,54 @@ import white from "../media/colors/white.jpg"
 import yellow from "../media/colors/yellow.png"
 import exit from "../media/exit2.svg"
 
+const ALL_CLOTHES_URL=""
+const ALL_ACCESSORIES_URL="http://localhost:8080/accessories"
+
 
 const ClothesSearch =(props)=>{
     const [clothes, setClothes]=useState([]);
     const [formVisible, setFormVisible] = useState(props.style);
     const [selected, setSelected] = useState('');
-    const [fileBase64String, setFileBase64String] = useState('');
+    const [colors, setColors]=useState([]);
+
+    const handleItemClick = (image) => {
+        props.setSelectedImage(image);
+       
+    };
 
     useEffect(() => {
         setFormVisible(props.style);
     }, [props.style]);
     
     useEffect(()=>{
-        fetch("http://localhost:8080/accessories")
+        fetch(ALL_ACCESSORIES_URL)
         .then(res=>res.json())
         .then((result)=>{
             setClothes(result);
         })
-    },[]);
+    },[props.type, selected]);
     
-      
+    useEffect(() => {
+        console.log(colors);
+      }, [colors]);  
+
     const closeSearchForm = () => {
       setFormVisible(false);
     };
+
     const selectValue=(event)=>{
         const selectedValue = event.target.value
         setSelected(selectedValue)
+        console.log("type: "+selectedValue)
     }
+    const addColor = (color) => {
+        setColors((prevColors) => [...prevColors, color]);
+    };
+    
+    const removeColor = (color) => {
+        setColors((prevColors) => prevColors.filter((c) => c !== color));
+
+    };
    
     const getOptionsByType = () => {
         switch (props.type) {
@@ -77,23 +98,23 @@ const ClothesSearch =(props)=>{
                         ))}
                     </select>
                     <div className='colors'>
-                            <ColorButton color="white" colorUrl={white} />
-                            <ColorButton color="beige" colorUrl={beige} />
-                            <ColorButton color="yellow" colorUrl={yellow} />
-                            <ColorButton color="pink" colorUrl={pink} />
-                            <ColorButton color="orange" colorUrl={orange} />
-                            <ColorButton color="brown" colorUrl={brown} />
-                            <ColorButton color="blue" colorUrl={blue} />
-                            <ColorButton color="green" colorUrl={green} />
-                            <ColorButton color="purple" colorUrl={purple} />
-                            <ColorButton color="red" colorUrl={red} />
-                            <ColorButton color="gray" colorUrl={gray}/>
-                            <ColorButton color="black" colorUrl={black} />
+                            <ColorButton color="white" colorUrl={white} addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="beige" colorUrl={beige}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="yellow" colorUrl={yellow} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="pink" colorUrl={pink}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="orange" colorUrl={orange}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="brown" colorUrl={brown}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="blue" colorUrl={blue} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="green" colorUrl={green} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="purple" colorUrl={purple}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="red" colorUrl={red} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="gray" colorUrl={gray}addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="black" colorUrl={black} addColor={addColor} removeColor={removeColor}/>
 
-                            <ColorButton color="floral" colorUrl={floral} />
-                            <ColorButton color="striped" colorUrl={striped} />
-                            <ColorButton color="checkered" colorUrl={checkered} />
-                            <ColorButton color="animal" colorUrl={animal} />                           
+                            <ColorButton color="floral" colorUrl={floral} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="striped" colorUrl={striped}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="checkered" colorUrl={checkered}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="animal" colorUrl={animal}addColor={addColor} removeColor={removeColor} />                           
                     </div>
                    
                         <button className='exit-button-search' onClick={closeSearchForm}>
@@ -108,8 +129,8 @@ const ClothesSearch =(props)=>{
                             return(
                                 <div className='col-md-3 mb-4'>
                                     <div className="outfit-card">
-                                        <button type='button'>
-                                            <img src={values.image}></img>
+                                        <button type='button' className='item-button' key={values.image}  onClick={() => handleItemClick(values.image)}>
+                                            <img src={values.image} ></img>
                                         </button>
                                     </div>
                                 </div>
