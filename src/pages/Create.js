@@ -1,11 +1,11 @@
-import {React, useState }from "react";
+import {React, useState , useEffect}from "react";
 import html2canvas from "html2canvas";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PublishForm from "../components/PublishForm";
 import ClothesSearch from "../components/ClothesSearch";
 
-import download from "../media/download.svg";
+import downloadIcon from "../media/download.svg";
 import plus from "../media/plus.svg"
 import bin from "../media/icons8-bin.svg";
 import hat from "../media/clothes_template/beret.svg"
@@ -21,6 +21,7 @@ import shoes from "../media/clothes_template/shoes.svg"
 const Create =()=>{
     const [isPubVis, setisPubVis] = useState(false);
     const [isSchVis, setisSchVis] = useState(false);
+    const [downloadBut, setDownloadBut]=useState(false)
     const [type, setType] = useState("type");
 
     const [selectedImageHat, setSelectedImageHat] = useState(null);
@@ -132,15 +133,22 @@ const Create =()=>{
                 break
         }
     };
-  
-    const downloadImage= async()=>{
-        html2canvas(document.querySelector("#capture")).then(canvas => {
+   
+    const pressDownload=async ()=>{
+        setDownloadBut(true)
+        setTimeout(() =>  download() , 500);
+       setTimeout(( ) => setDownloadBut(false), 500);
+    }
+   
+    const download = async()=>{
+        await html2canvas(document.querySelector("#capture")).then(canvas => {
             let image = canvas.toDataURL("image/png");
+            console.log(image)
             let link = document.createElement("a");
             link.href = image;
             link.download = "outfit.png";
             link.click();
-        })
+        });
     }
   
     return(
@@ -163,7 +171,7 @@ const Create =()=>{
                         <div className="creating-template" id="capture">
                             <div className="template-section">
                                 <div className="item hat">
-                                    <div className="item-actions">
+                                    <div className={`item-actions ${downloadBut ? 'hidden' : ''}`}>
                                         <button type="button" className={`delete-button ${shownBinHat ? 'visible' : ''}`} onClick={()=>deleteItem("hat")}>
                                             <img src={bin} alt="delete"/>
                                         </button>
@@ -171,10 +179,10 @@ const Create =()=>{
                                             <img src={plus} alt="add"/>
                                         </button> 
                                     </div>
-                                    <img src={selectedImageHat === null ? hat : selectedImageHat}  alt="hat" onClick={()=>showBin("hat")}></img>
+                                    <img src={selectedImageHat === null ? hat : selectedImageHat} className={selectedImageHat === null ? (downloadBut ? 'hidden' : ''):'' }  alt="hat" onClick={()=>showBin("hat")}></img>
                                 </div>
                                 <div className="item coat">
-                                    <div className="item-actions">
+                                    <div className={`item-actions ${downloadBut ? 'hidden' : ''}`}>
                                         <button type="button" className={`delete-button ${shownBinCoat ? 'visible' : ''}`} onClick={()=>deleteItem("otter wear")}>
                                             <img src={bin} alt="delete"/>
                                         </button>
@@ -182,13 +190,13 @@ const Create =()=>{
                                             <img src={plus} alt="add"/>
                                         </button>
                                     </div>
-                                    <img src={selectedImageCoat === null ? coat : selectedImageCoat} alt="coat" onClick={()=>showBin("otter wear")}></img>
+                                    <img src={selectedImageCoat === null ? coat : selectedImageCoat} className={selectedImageCoat === null ? (downloadBut ? 'hidden' : ''):'' } alt="coat" onClick={()=>showBin("otter wear")}></img>
                                     
                                 </div>
                             </div>
                             <div className="template-section" id="main-fit-section">
                                 <div className="item top">
-                                    <div className="item-actions">
+                                    <div className={`item-actions ${downloadBut ? 'hidden' : ''}`}>
                                         <button type="button" className={`delete-button ${shownBinTop ? 'visible' : ''}`} onClick={()=>deleteItem("top")}>
                                             <img src={bin} alt="delete"/>
                                         </button>
@@ -196,10 +204,10 @@ const Create =()=>{
                                             <img src={plus} alt="add"></img>
                                         </button>
                                     </div>
-                                    <img src={selectedImageTop === null ? tshirt : selectedImageTop} alt="t-shirt" onClick={()=>showBin("top")}></img>
+                                    <img src={selectedImageTop === null ? tshirt : selectedImageTop} className={selectedImageTop === null ? (downloadBut ? 'hidden' : ''):'' } alt="t-shirt" onClick={()=>showBin("top")}></img>
                                 </div>
                                 <div className="item bottom">
-                                     <div className="item-actions">
+                                     <div className={`item-actions ${downloadBut ? 'hidden' : ''}`}>
                                         <button type="button" className={`delete-button ${shownBinBottom ? 'visible' : ''}`} onClick={()=>deleteItem("bottom")}>
                                             <img src={bin} alt="delete"/>
                                         </button>
@@ -207,12 +215,12 @@ const Create =()=>{
                                             <img src={plus} alt="add"></img>
                                         </button>
                                     </div>
-                                    <img src={selectedImageBottom === null ? jeans : selectedImageBottom} alt="jeans" onClick={()=>showBin("bottom")}></img>
+                                    <img src={selectedImageBottom === null ? jeans : selectedImageBottom} className={selectedImageBottom === null ? (downloadBut ? 'hidden' : ''):'' } alt="jeans" onClick={()=>showBin("bottom")}></img>
                                 </div>
                             </div>
                             <div className="template-section">
                                 <div className="item glasses">
-                                    <div className="item-actions">
+                                    <div className={`item-actions ${downloadBut ? 'hidden' : ''}`}>
                                         <button type="button" className={`delete-button ${shownBinGlasses ? 'visible' : ''}`} onClick={()=>deleteItem("glasses")}>
                                             <img src={bin} alt="delete"/>
                                         </button>
@@ -220,10 +228,10 @@ const Create =()=>{
                                             <img src={plus} alt="add"></img>
                                         </button>
                                     </div>
-                                    <img src={selectedImageGlasses === null ? glasses : selectedImageGlasses} alt="glasses" onClick={()=>showBin("glasses")}></img>
+                                    <img src={selectedImageGlasses === null ? glasses : selectedImageGlasses} className={selectedImageGlasses === null ? (downloadBut ? 'hidden' : ''):'' } alt="glasses" onClick={()=>showBin("glasses")}></img>
                                 </div>
                                 <div className="item bag">
-                                    <div className="item-actions">
+                                    <div className={`item-actions ${downloadBut ? 'hidden' : ''}`}>
                                         <button type="button" className={`delete-button ${shownBinBag ? 'visible' : ''}`} onClick={()=>deleteItem("bag")}>
                                             <img src={bin} alt="delete"/>
                                         </button>
@@ -231,10 +239,10 @@ const Create =()=>{
                                             <img src={plus} alt="add"></img>
                                         </button>
                                     </div>
-                                    <img src={selectedImageBag === null ? bag : selectedImageBag}  alt="bag" onClick={()=>showBin("bag")}></img>
+                                    <img src={selectedImageBag === null ? bag : selectedImageBag} className={selectedImageBag === null ? (downloadBut ? 'hidden' : ''):'' } alt="bag" onClick={()=>showBin("bag")}></img>
                                 </div>
                                 <div className="item shoes">
-                                    <div className="item-actions">
+                                    <div className={`item-actions ${downloadBut ? 'hidden' : ''}`}>
                                         <button type="button" className={`delete-button ${shownBinShoes ? 'visible' : ''}`} onClick={()=>deleteItem("shoes")}>
                                             <img src={bin} alt="delete"/>
                                         </button>
@@ -242,14 +250,14 @@ const Create =()=>{
                                             <img src={plus} alt="add"></img>
                                         </button>
                                     </div>
-                                    <img src={selectedImageShoes === null ? shoes : selectedImageShoes} alt="shoes" onClick={()=>showBin("shoes")}></img>
+                                    <img src={selectedImageShoes === null ? shoes : selectedImageShoes} className={selectedImageShoes === null ? (downloadBut ? 'hidden' : ''):'' } alt="shoes" onClick={()=>showBin("shoes")}></img>
                                 </div>
                             </div>
                         </div>
                         <div className="template-bar">
                             <button className="button-container create-button"onClick={handleClick}>Publish</button>
-                            <button className="button-container down-button" onClick={downloadImage}>
-                                <img src={download} alt="download"></img>
+                            <button className="button-container down-button" onClick={pressDownload}>
+                                <img src={downloadIcon} alt="download"></img>
                             </button>
                         </div>
                    </div>
