@@ -19,7 +19,7 @@ import white from "../media/colors/white.jpg"
 import yellow from "../media/colors/yellow.png"
 import exit from "../media/exit2.svg"
 
-const ALL_CLOTHES_URL=""
+const ALL_CLOTHES_URL="http://localhost:8080/clothes"
 const ALL_ACCESSORIES_URL="http://localhost:8080/accessories"
 
 
@@ -38,7 +38,30 @@ const ClothesSearch =(props)=>{
     }, [props.style]);
     
     useEffect(()=>{
-        fetch(ALL_ACCESSORIES_URL)
+        let url;
+        switch(props.type){
+            case 'shoes':
+                url=ALL_CLOTHES_URL+"/footwears"
+                console.log("shoes")
+                break;
+            case 'tops':
+                url=ALL_CLOTHES_URL+"/tops"
+                console.log("top")
+                break;
+            case 'bottoms':
+                url=ALL_CLOTHES_URL+"/bottoms"
+                console.log("bottom")
+                break;
+            case 'otter wear':
+                url=ALL_CLOTHES_URL+"/otters"
+                console.log("otter")
+                break;
+            default:
+                url=ALL_ACCESSORIES_URL
+                console.log("access")
+
+        }
+        fetch(url)
         .then(res=>res.json())
         .then((result)=>{
             setClothes(result);
@@ -47,7 +70,7 @@ const ClothesSearch =(props)=>{
     
     useEffect(() => {
         console.log(colors);
-      }, [colors]);  
+    }, [colors]);  
 
     const closeSearchForm = () => {
       setFormVisible(false);

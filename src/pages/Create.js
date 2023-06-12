@@ -1,4 +1,5 @@
 import {React, useState }from "react";
+import html2canvas from "html2canvas";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PublishForm from "../components/PublishForm";
@@ -63,7 +64,6 @@ const Create =()=>{
                 break
         }
 
-        
     };
     const handleClick = () => {
         setisPubVis(current => !current);
@@ -131,13 +131,18 @@ const Create =()=>{
                 setSelectedImageBottom(null) 
                 break
         }
-
-        
-       
     };
-    
-
-    
+  
+    const downloadImage= async()=>{
+        html2canvas(document.querySelector("#capture")).then(canvas => {
+            let image = canvas.toDataURL("image/png");
+            let link = document.createElement("a");
+            link.href = image;
+            link.download = "outfit.png";
+            link.click();
+        })
+    }
+  
     return(
             <div>
                 <div className="noise"></div>
@@ -155,7 +160,7 @@ const Create =()=>{
                         <h1 id="ques-mark"><small><a href="#tutor">?</a></small></h1>
                     </div>
                    <div className="creating-container">
-                        <div className="creating-template">
+                        <div className="creating-template" id="capture">
                             <div className="template-section">
                                 <div className="item hat">
                                     <div className="item-actions">
@@ -166,7 +171,7 @@ const Create =()=>{
                                             <img src={plus} alt="add"/>
                                         </button> 
                                     </div>
-                                    <img src={selectedImageHat === null ? hat : selectedImageHat} alt="hat" onClick={()=>showBin("hat")}></img>
+                                    <img src={selectedImageHat === null ? hat : selectedImageHat}  alt="hat" onClick={()=>showBin("hat")}></img>
                                 </div>
                                 <div className="item coat">
                                     <div className="item-actions">
@@ -243,7 +248,7 @@ const Create =()=>{
                         </div>
                         <div className="template-bar">
                             <button className="button-container create-button"onClick={handleClick}>Publish</button>
-                            <button className="button-container down-button">
+                            <button className="button-container down-button" onClick={downloadImage}>
                                 <img src={download} alt="download"></img>
                             </button>
                         </div>
