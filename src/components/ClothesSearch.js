@@ -31,7 +31,6 @@ const ClothesSearch =(props)=>{
 
     const handleItemClick = (image) => {
         props.onSelectImage(image);
-       
     };
 
     useEffect(() => {

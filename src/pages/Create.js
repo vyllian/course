@@ -20,10 +20,42 @@ const Create =()=>{
     const [isPubVis, setisPubVis] = useState(false);
     const [isSchVis, setisSchVis] = useState(false);
     const [type, setType] = useState("type");
-    const [selectedImage, setSelectedImage] = useState(null);
+
+    const [selectedImageHat, setSelectedImageHat] = useState(null);
+    const [selectedImageShoes, setSelectedImageShoes] = useState(null);
+    const [selectedImageBag, setSelectedImageBag] = useState(null);
+    const [selectedImageGlasses, setSelectedImageGlasses] = useState(null);
+    const [selectedImageTop, setSelectedImageTop] = useState(null);
+    const [selectedImageBottom, setSelectedImageBottom] = useState(null);
+    const [selectedImageCoat, setSelectedImageCoat] = useState(null);
+
 
     const handleImageSelection = (image) => {
-    setSelectedImage(image);
+        switch (type){
+            case 'shoes':
+                setSelectedImageShoes(image);
+                break
+            case 'hat':
+                setSelectedImageHat(image);
+                break
+            case 'bag':
+                setSelectedImageBag(image);
+                break
+            case 'glasses':
+                setSelectedImageGlasses(image);
+                break
+            case 'top':
+                setSelectedImageTop(image);
+                break
+            case 'bottom':
+                setSelectedImageBottom(image);
+                break
+            case 'otter wear':
+                setSelectedImageCoat(image);
+                break
+        }
+
+        
     };
     const handleClick = () => {
         setisPubVis(current => !current);
@@ -31,6 +63,10 @@ const Create =()=>{
     const openSearchForm = (plusType)=>{
         setisSchVis(current => !current);
         setType(plusType);
+    }
+
+    const showBin=()=>{
+        
     }
     
 
@@ -58,47 +94,47 @@ const Create =()=>{
                                     <button type="button" className="plus-button" onClick={() => openSearchForm("hat")} >
                                         <img src={plus} alt="add"/>
                                     </button>
-                                    <img src={selectedImage === null ? hat : selectedImage} alt="hat"></img>
+                                    <img src={selectedImageHat === null ? hat : selectedImageHat} alt="hat" onClick={showBin}></img>
                                 </div>
-                                <div className="item">
+                                <div className="item coat">
                                     <button type="button"className="plus-button" onClick={()=>openSearchForm("otter wear")}>
                                         <img src={plus} alt="add"/>
                                     </button>
-                                    <img src={coat} alt="coat"></img>
+                                    <img src={selectedImageCoat === null ? coat : selectedImageCoat} alt="coat"></img>
                                 </div>
                             </div>
                             <div className="template-section" id="main-fit-section">
-                                <div className="item">
+                                <div className="item top">
                                     <button type="button"className="plus-button" onClick={()=>openSearchForm("top")}>
                                         <img src={plus} alt="add"></img>
                                     </button>
-                                    <img src={tshirt} alt="t-shirt"></img>
+                                    <img src={selectedImageTop === null ? tshirt : selectedImageTop} alt="t-shirt"></img>
                                 </div>
-                                <div className="item">
+                                <div className="item bottom">
                                     <button type="button"className="plus-button" onClick={()=>openSearchForm("bottom")}>
                                         <img src={plus} alt="add"></img>
                                     </button>
-                                    <img src={jeans} alt="jeans"></img>
+                                    <img src={selectedImageBottom === null ? jeans : selectedImageBottom} alt="jeans"></img>
                                 </div>
                             </div>
                             <div className="template-section">
-                                <div className="item">
+                                <div className="item glasses">
                                     <button type="button"className="plus-button" onClick={()=>openSearchForm("glasses")}>
                                         <img src={plus} alt="add"></img>
                                     </button>
-                                    <img src={glasses} alt="glasses"></img>
+                                    <img src={selectedImageGlasses === null ? glasses : selectedImageGlasses} alt="glasses"></img>
                                 </div>
-                                <div className="item">
+                                <div className="item bag">
                                     <button type="button"className="plus-button"onClick={()=>openSearchForm("bag")} >
                                         <img src={plus} alt="add"></img>
                                     </button>
-                                    <img src={bag} alt="bag"></img>
+                                    <img src={selectedImageBag === null ? bag : selectedImageBag}  alt="bag"></img>
                                 </div>
-                                <div className="item">
+                                <div className="item shoes">
                                     <button type="button"className="plus-button" onClick={()=>openSearchForm("shoes")} >
                                         <img src={plus} alt="add"></img>
                                     </button>
-                                    <img src={shoes} alt="shoes"></img>
+                                    <img src={selectedImageShoes === null ? shoes : selectedImageShoes} alt="shoes"></img>
                                 </div>
                             </div>
                         </div>

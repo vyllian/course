@@ -38,7 +38,7 @@
 }
 .creating-template{
     width: 1115px;
-    height: 713px;
+    height: 750px;
     background: #FFFFFF;
     border-radius: 20px; 
     margin-bottom: 40px;
@@ -134,4 +134,22 @@ ol{
 }
 .hat img{
     width: 135px;
+}
+.shoes img{
+    width: 140px;
+}
+.coat img{
+    width:220px ;
+}
+.top img{
+    width: 220px;
+}
+.bottom img{
+    width: 200px;
+}
+.glasses img{
+    width: 140px;
+}
+.bag img{
+    width: 140px;
 }
