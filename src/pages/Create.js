@@ -20,6 +20,11 @@ const Create =()=>{
     const [isPubVis, setisPubVis] = useState(false);
     const [isSchVis, setisSchVis] = useState(false);
     const [type, setType] = useState("type");
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const handleImageSelection = (image) => {
+    setSelectedImage(image);
+    };
     const handleClick = () => {
         setisPubVis(current => !current);
     };
@@ -27,6 +32,7 @@ const Create =()=>{
         setisSchVis(current => !current);
         setType(plusType);
     }
+    
 
     
     return(
@@ -38,7 +44,7 @@ const Create =()=>{
                     
                 </div>
                 <div className="search-window">
-                    <ClothesSearch style={isSchVis} type={type}/>
+                    <ClothesSearch style={isSchVis} type={type}  onSelectImage={handleImageSelection} />
                 </div> 
                 <div className="create-page page">
                     <div className="header-pow">
@@ -48,11 +54,11 @@ const Create =()=>{
                    <div className="creating-container">
                         <div className="creating-template">
                             <div className="template-section">
-                                <div className="item">
+                                <div className="item hat">
                                     <button type="button" className="plus-button" onClick={() => openSearchForm("hat")} >
                                         <img src={plus} alt="add"/>
                                     </button>
-                                    <img src={hat} alt="hat"></img>
+                                    <img src={selectedImage === null ? hat : selectedImage} alt="hat"></img>
                                 </div>
                                 <div className="item">
                                     <button type="button"className="plus-button" onClick={()=>openSearchForm("otter wear")}>

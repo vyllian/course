@@ -30,7 +30,7 @@ const ClothesSearch =(props)=>{
     const [colors, setColors]=useState([]);
 
     const handleItemClick = (image) => {
-        props.setSelectedImage(image);
+        props.onSelectImage(image);
        
     };
 
@@ -57,7 +57,6 @@ const ClothesSearch =(props)=>{
     const selectValue=(event)=>{
         const selectedValue = event.target.value
         setSelected(selectedValue)
-        console.log("type: "+selectedValue)
     }
     const addColor = (color) => {
         setColors((prevColors) => [...prevColors, color]);
