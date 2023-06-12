@@ -72,18 +72,32 @@
 .item img{
     object-fit: contain;
 }
-.plus-button{
-    width: 20px;
-    height: 20px;
+.item-actions{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.plus-button, .delete-button{
     background:none; 
     display: flex;
     justify-content:center;
     align-items: center; 
     z-index: 1;
 }
-.plus-button img{
+.plus-button img, .plus-button{
     width: 20px;
     height: 20px;
+}
+.delete-button img, .delete-button{
+    width: 30px;
+    height: 30px;
+}
+.delete-button{
+    visibility: hidden;
+}
+.visible{
+    visibility: visible;
 }
 
 

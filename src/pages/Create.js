@@ -6,6 +6,7 @@ import ClothesSearch from "../components/ClothesSearch";
 
 import download from "../media/download.svg";
 import plus from "../media/plus.svg"
+import bin from "../media/icons8-bin.svg";
 import hat from "../media/clothes_template/beret.svg"
 import coat from "../media/clothes_template/coat.svg"
 import tshirt from "../media/clothes_template/tshirt.svg"
@@ -28,7 +29,14 @@ const Create =()=>{
     const [selectedImageTop, setSelectedImageTop] = useState(null);
     const [selectedImageBottom, setSelectedImageBottom] = useState(null);
     const [selectedImageCoat, setSelectedImageCoat] = useState(null);
-
+    
+    const [shownBinHat, setshownBinHat] = useState(false);
+    const [shownBinShoes, setshownBinShoes] = useState(false);
+    const [shownBinBag, setshownBinBag] = useState(false);
+    const [shownBinGlasses, setshownBinGlasses] = useState(false);
+    const [shownBinTop, setshownBinTop] = useState(false);
+    const [shownBinBottom, setshownBinBottom] = useState(false);
+    const [shownBinCoat, setshownBinCoat] = useState(false);
 
     const handleImageSelection = (image) => {
         switch (type){
@@ -65,9 +73,68 @@ const Create =()=>{
         setType(plusType);
     }
 
-    const showBin=()=>{
+    const showBin = (where) => {
+        switch (where){
+            case 'hat':
+                setshownBinHat(!shownBinHat)
+                break;
+            case 'otter wear':
+                setshownBinCoat(!shownBinCoat)
+                break;  
+            case 'shoes':
+                setshownBinShoes(!shownBinShoes)
+                break
+            case 'bag':
+                setshownBinBag(!shownBinBag)
+                break
+            case 'glasses':
+                setshownBinGlasses(!shownBinGlasses)
+                break
+            case 'top':
+                setshownBinTop(!shownBinTop)
+                break
+            case 'bottom':
+                setshownBinBottom(!shownBinBottom)
+                break
+        }   
         
-    }
+    };
+    
+    const deleteItem = (where) => {
+        switch (where){
+            case 'hat':
+                setshownBinHat(false);
+                setSelectedImageHat(null) 
+                break;
+            case 'otter wear':
+                setshownBinCoat(false);
+                setSelectedImageCoat(null) 
+                break;  
+            case 'shoes':
+                setshownBinShoes(false);
+                setSelectedImageShoes(null) 
+                break;
+            case 'bag':
+                setshownBinBag(false);
+                setSelectedImageBag(null) 
+                break
+            case 'glasses':
+                setshownBinGlasses(false);
+                setSelectedImageGlasses(null) 
+                break
+            case 'top':
+                setshownBinTop(false);
+                setSelectedImageTop(null) 
+                break
+            case 'bottom':
+                setshownBinBottom(false);
+                setSelectedImageBottom(null) 
+                break
+        }
+
+        
+       
+    };
     
 
     
@@ -91,50 +158,86 @@ const Create =()=>{
                         <div className="creating-template">
                             <div className="template-section">
                                 <div className="item hat">
-                                    <button type="button" className="plus-button" onClick={() => openSearchForm("hat")} >
-                                        <img src={plus} alt="add"/>
-                                    </button>
-                                    <img src={selectedImageHat === null ? hat : selectedImageHat} alt="hat" onClick={showBin}></img>
+                                    <div className="item-actions">
+                                        <button type="button" className={`delete-button ${shownBinHat ? 'visible' : ''}`} onClick={()=>deleteItem("hat")}>
+                                            <img src={bin} alt="delete"/>
+                                        </button>
+                                        <button type="button" className="plus-button" onClick={() => openSearchForm("hat")} >
+                                            <img src={plus} alt="add"/>
+                                        </button> 
+                                    </div>
+                                    <img src={selectedImageHat === null ? hat : selectedImageHat} alt="hat" onClick={()=>showBin("hat")}></img>
                                 </div>
                                 <div className="item coat">
-                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("otter wear")}>
-                                        <img src={plus} alt="add"/>
-                                    </button>
-                                    <img src={selectedImageCoat === null ? coat : selectedImageCoat} alt="coat"></img>
+                                    <div className="item-actions">
+                                        <button type="button" className={`delete-button ${shownBinCoat ? 'visible' : ''}`} onClick={()=>deleteItem("otter wear")}>
+                                            <img src={bin} alt="delete"/>
+                                        </button>
+                                        <button type="button"className="plus-button" onClick={()=>openSearchForm("otter wear")}>
+                                            <img src={plus} alt="add"/>
+                                        </button>
+                                    </div>
+                                    <img src={selectedImageCoat === null ? coat : selectedImageCoat} alt="coat" onClick={()=>showBin("otter wear")}></img>
+                                    
                                 </div>
                             </div>
                             <div className="template-section" id="main-fit-section">
                                 <div className="item top">
-                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("top")}>
-                                        <img src={plus} alt="add"></img>
-                                    </button>
-                                    <img src={selectedImageTop === null ? tshirt : selectedImageTop} alt="t-shirt"></img>
+                                    <div className="item-actions">
+                                        <button type="button" className={`delete-button ${shownBinTop ? 'visible' : ''}`} onClick={()=>deleteItem("top")}>
+                                            <img src={bin} alt="delete"/>
+                                        </button>
+                                        <button type="button"className="plus-button" onClick={()=>openSearchForm("top")}>
+                                            <img src={plus} alt="add"></img>
+                                        </button>
+                                    </div>
+                                    <img src={selectedImageTop === null ? tshirt : selectedImageTop} alt="t-shirt" onClick={()=>showBin("top")}></img>
                                 </div>
                                 <div className="item bottom">
-                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("bottom")}>
-                                        <img src={plus} alt="add"></img>
-                                    </button>
-                                    <img src={selectedImageBottom === null ? jeans : selectedImageBottom} alt="jeans"></img>
+                                     <div className="item-actions">
+                                        <button type="button" className={`delete-button ${shownBinBottom ? 'visible' : ''}`} onClick={()=>deleteItem("bottom")}>
+                                            <img src={bin} alt="delete"/>
+                                        </button>
+                                        <button type="button"className="plus-button" onClick={()=>openSearchForm("bottom")}>
+                                            <img src={plus} alt="add"></img>
+                                        </button>
+                                    </div>
+                                    <img src={selectedImageBottom === null ? jeans : selectedImageBottom} alt="jeans" onClick={()=>showBin("bottom")}></img>
                                 </div>
                             </div>
                             <div className="template-section">
                                 <div className="item glasses">
-                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("glasses")}>
-                                        <img src={plus} alt="add"></img>
-                                    </button>
-                                    <img src={selectedImageGlasses === null ? glasses : selectedImageGlasses} alt="glasses"></img>
+                                    <div className="item-actions">
+                                        <button type="button" className={`delete-button ${shownBinGlasses ? 'visible' : ''}`} onClick={()=>deleteItem("glasses")}>
+                                            <img src={bin} alt="delete"/>
+                                        </button>
+                                        <button type="button"className="plus-button" onClick={()=>openSearchForm("glasses")}>
+                                            <img src={plus} alt="add"></img>
+                                        </button>
+                                    </div>
+                                    <img src={selectedImageGlasses === null ? glasses : selectedImageGlasses} alt="glasses" onClick={()=>showBin("glasses")}></img>
                                 </div>
                                 <div className="item bag">
-                                    <button type="button"className="plus-button"onClick={()=>openSearchForm("bag")} >
-                                        <img src={plus} alt="add"></img>
-                                    </button>
-                                    <img src={selectedImageBag === null ? bag : selectedImageBag}  alt="bag"></img>
+                                    <div className="item-actions">
+                                        <button type="button" className={`delete-button ${shownBinBag ? 'visible' : ''}`} onClick={()=>deleteItem("bag")}>
+                                            <img src={bin} alt="delete"/>
+                                        </button>
+                                        <button type="button"className="plus-button"onClick={()=>openSearchForm("bag")} >
+                                            <img src={plus} alt="add"></img>
+                                        </button>
+                                    </div>
+                                    <img src={selectedImageBag === null ? bag : selectedImageBag}  alt="bag" onClick={()=>showBin("bag")}></img>
                                 </div>
                                 <div className="item shoes">
-                                    <button type="button"className="plus-button" onClick={()=>openSearchForm("shoes")} >
-                                        <img src={plus} alt="add"></img>
-                                    </button>
-                                    <img src={selectedImageShoes === null ? shoes : selectedImageShoes} alt="shoes"></img>
+                                    <div className="item-actions">
+                                        <button type="button" className={`delete-button ${shownBinShoes ? 'visible' : ''}`} onClick={()=>deleteItem("shoes")}>
+                                            <img src={bin} alt="delete"/>
+                                        </button>
+                                        <button type="button"className="plus-button" onClick={()=>openSearchForm("shoes")} >
+                                            <img src={plus} alt="add"></img>
+                                        </button>
+                                    </div>
+                                    <img src={selectedImageShoes === null ? shoes : selectedImageShoes} alt="shoes" onClick={()=>showBin("shoes")}></img>
                                 </div>
                             </div>
                         </div>
