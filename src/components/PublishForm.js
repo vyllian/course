@@ -1,4 +1,5 @@
 import {React, useState, useEffect} from 'react'
+import format from 'date-fns/format'
 import ColorButton from './ColorButton'
 
 import animal from "../media/colors/animal.jpg"
@@ -22,16 +23,66 @@ import exit from "../media/exit.svg"
 
 const PublishForm =(props)=>{
     const { imageUrl, isPubVis, closePubForm } = props;
+    const [outfitColors, setColors]=useState([]);
+    const [selectedMood, setSelectedMood] = useState('none');
+    const [selectedStyle, setSelectedStyle] = useState('none');
+    const [selectedSeason, setSelectedSeason] = useState('none');
 
+    
+    const addColor = (color) => {
+        setColors((prevColors) => [...prevColors, color]);
+    };
+    
+    const removeColor = (color) => {
+        setColors((prevColors) => prevColors.filter((c) => c !== color));
+
+    };
     useEffect(() => {
       setFormVisible(isPubVis);
     }, [isPubVis]);
+    useEffect(() => {
+        if (!isPubVis) {
+          // Reset selected values when form is closed
+          setSelectedMood('none');
+          setSelectedSeason('none');
+          setSelectedStyle('none');
+        }
+      }, [isPubVis]);
   
     const setFormVisible = (visible) => {
       document.body.style.overflow = visible ? "hidden" : "auto";
     };
+    const close=()=>{
+        closePubForm()
+
+    }
   
     const handlePublish = () => {
+        const outfit=  {
+            mood: selectedMood,
+            style: selectedStyle,
+            season: selectedSeason,
+            colors: outfitColors,
+            date:format(new Date(), 'dd/MMM/yy'),
+            likes:0,
+            image:imageUrl
+        }
+        
+        fetch('http://localhost:8080/outfits/add',{
+            method: 'post',
+            mode: 'cors',
+            cache: 'no-cache',
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body:JSON.stringify(outfit),
+            
+        } ).then((response) =>{
+            if (response.status===200)
+            alert("Outfit added!")
+        })
+        
+
         closePubForm();
       // Perform publishing logic here
     };
@@ -39,7 +90,7 @@ const PublishForm =(props)=>{
     return(
         <div className="publish-template" style={{visibility: isPubVis  ? 'visible' : 'hidden'}}>
             <div className='exit'>
-                <button className='exit-button'onClick={closePubForm}>
+                <button className='exit-button'onClick={close}>
                     <img className='exit-img' src={exit} alt='exit'></img>
                 </button>
             </div>
@@ -47,27 +98,27 @@ const PublishForm =(props)=>{
                 <img  src={props.imageUrl} alt='your outfit' ></img>
            </div>
             <div className='colors'>
-                <ColorButton color="white" colorUrl={white} />
-                <ColorButton color="beige" colorUrl={beige} />
-                <ColorButton color="yellow" colorUrl={yellow} />
-                <ColorButton color="pink" colorUrl={pink} />
-                <ColorButton color="orange" colorUrl={orange} />
-                <ColorButton color="brown" colorUrl={brown} />
-                <ColorButton color="blue" colorUrl={blue} />
-                <ColorButton color="green" colorUrl={green} />
+                <ColorButton color="white" colorUrl={white}  addColor={addColor} removeColor={removeColor}/>
+                <ColorButton color="beige" colorUrl={beige}  addColor={addColor} removeColor={removeColor}/>
+                <ColorButton color="yellow" colorUrl={yellow}  addColor={addColor} removeColor={removeColor} />
+                <ColorButton color="pink" colorUrl={pink}  addColor={addColor} removeColor={removeColor}/>
+                <ColorButton color="orange" colorUrl={orange}  addColor={addColor} removeColor={removeColor}/>
+                <ColorButton color="brown" colorUrl={brown}  addColor={addColor} removeColor={removeColor}/>
+                <ColorButton color="blue" colorUrl={blue}  addColor={addColor} removeColor={removeColor}/>
+                <ColorButton color="green" colorUrl={green}  addColor={addColor} removeColor={removeColor}/>
             </div>
             <div className='colors'>
-                <ColorButton color="purple" colorUrl={purple} />
-                <ColorButton color="red" colorUrl={red} />
-                <ColorButton color="gray" colorUrl={gray}/>
-                <ColorButton color="black" colorUrl={black} />
-                <ColorButton color="floral" colorUrl={floral} />
-                <ColorButton color="striped" colorUrl={striped} />
-                <ColorButton color="checkered" colorUrl={checkered} />
-                <ColorButton color="animal" colorUrl={animal} />
+                <ColorButton color="purple" colorUrl={purple} addColor={addColor} removeColor={removeColor} />
+                <ColorButton color="red" colorUrl={red} addColor={addColor} removeColor={removeColor} />
+                <ColorButton color="gray" colorUrl={gray} addColor={addColor} removeColor={removeColor}/>
+                <ColorButton color="black" colorUrl={black}  addColor={addColor} removeColor={removeColor} />
+                <ColorButton color="floral" colorUrl={floral} addColor={addColor} removeColor={removeColor} />
+                <ColorButton color="striped" colorUrl={striped}  addColor={addColor} removeColor={removeColor}/>
+                <ColorButton color="checkered" colorUrl={checkered} addColor={addColor} removeColor={removeColor} />
+                <ColorButton color="animal" colorUrl={animal}  addColor={addColor} removeColor={removeColor}/>
             </div>
             <div className='publish-container'>
-                <select name="style" id="style">
+                <select name="style" id="style" value={selectedStyle} onChange={(e) => setSelectedStyle(e.target.value)}>
                     <option selected value="none">Style</option>
                     <option value="casual">Casual</option>
                     <option value="sport">Sport</option>
@@ -79,7 +130,7 @@ const PublishForm =(props)=>{
                     <option value="preppy">Preppy</option>
                     <option value="tomboy">Tomboy</option>
                 </select>            
-                <select name="season" id="season">
+                <select name="season" id="season" value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
                     <option selected value="none">Season</option>
                     <option value="winter">Winter</option>
                     <option value="spring">Spring</option>
@@ -88,7 +139,7 @@ const PublishForm =(props)=>{
                 </select>
             </div>
             <div className='publish-container'>
-                <select name="mood" id="mood">
+            <select name="mood" id="mood" value={selectedMood} onChange={(e) => setSelectedMood(e.target.value)}>
                     <option selected value="none">Mood</option>
                     <option value="sportic">Sportic</option>
                     <option value="relaxing">Relaxing</option>

@@ -69,6 +69,7 @@ const Create =()=>{
     };
     const closePubForm = () => {
         setisPubVis(false);
+
       };
     const pressPublish = () => {
         setisPubVis(true);
@@ -78,12 +79,11 @@ const Create =()=>{
             publish();
         }
     },[isPubVis])
+    
 
     const publish=()=>{
          setDownloadBut(true)
         setTimeout(()=> imgForming(), 500)
-         
-       
         setTimeout(( ) => setDownloadBut(false), 500);
     }
     const imgForming =async()=>{
@@ -94,8 +94,9 @@ const Create =()=>{
     }
 
     const openSearchForm = (plusType)=>{
-        setisSchVis(current => !current);
         setType(plusType);
+        setisSchVis(current => !current);
+        
     }
     const showBin = (where) => {
         switch (where){

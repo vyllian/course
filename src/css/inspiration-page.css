@@ -62,3 +62,11 @@ option{
 .color-img.active-col {
     border-color:  black; /* Застосуйте стилі рамки за своїми потребами */
 }
+.empty-text-inspo{
+    display: flex;
+    justify-content: center;
+    font-size: 48px;
+}
+.empty-text-inspo h1{
+    font-size: 52px;
+}

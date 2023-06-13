@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import {React, useState, useEffect} from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import OutfitContainer from "../components/OutfitContainer";
@@ -21,11 +21,21 @@ import striped from "../media/colors/striped.jpg"
 import white from "../media/colors/white.jpg"
 import yellow from "../media/colors/yellow.png"
 
-const mock=[{date:"1/dec/18", likes:20, imageUrl:yellow},{date:"1/dec/18", likes:20, imageUrl:pink},{date:"1/dec/18", likes:20, imageUrl:purple},{date:"1/dec/18", likes:20, imageUrl:black},{date:"1/dec/18", likes:20, imageUrl:yellow},{date:"1/dec/18", likes:20, imageUrl:blue},{date:"1/dec/18", likes:20, imageUrl:animal},{date:"1/dec/18", likes:20, imageUrl:floral}]
+const ALL_OUTFITS_URL="http://localhost:8080/outfits"
+
 
 const Inspiration =()=>{
-    const[data,setData]=useState(mock);
+    const[data,setData]=useState([]);
     
+    useEffect(()=>{
+        fetch(ALL_OUTFITS_URL)
+        .then(res=>res.json())
+        .then((result)=>{
+            setData(result);
+        })
+    },[]);
+    
+
     return(
             <div>
                 <div className="noise"></div>
@@ -91,12 +101,18 @@ const Inspiration =()=>{
                         </div>
                     </div>
                     <div className='col-md-12'>
-                            {data.map((values)=>{
-                                return(
-                                    <OutfitContainer imageUrl={values.imageUrl} date={values.date} likes={values.likes}/>
-
-                                )
-                            })} 
+                            {data.length===0 ? 
+                                ( 
+                                    <div className='empty-text-inspo'>
+                                        <h1>*no sutible outfits*</h1>
+                                    </div>
+                                ) :(
+                                data.map((values)=>{
+                                    return(
+                                        <OutfitContainer imageUrl={values.imageUrl} date={values.date} likes={values.likes}/>
+                                    )
+                                }))
+                            } 
                     </div>
 
                 </div>

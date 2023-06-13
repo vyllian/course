@@ -50,3 +50,13 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+.empty-text{
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-family: 'Italiana';
+}
+.empty-text h2{
+    font-weight: 700;
+
+}
