@@ -40,7 +40,6 @@ const ClothesSearch =(props)=>{
     }, [props.style]);
     
     useEffect(()=>{
-        console.log(selected)
         let url;
         if (selected==='' ||selected==='Top'||selected==='Glasses'||selected==='Bottom'||selected==='Footwear'|| selected==='Otter'|| selected==='Hat'|| selected==='Bag'){
             switch(props.type){
@@ -283,7 +282,6 @@ const ClothesSearch =(props)=>{
                             <h2>No sutible options</h2>
                         </div>
                     ) : (
-                        console.log(clothes),
                         clothes.map((values)=>{
                                 return(
                                     <div className='col-md-3 mb-4'>

@@ -23,8 +23,17 @@
 }
 .img-block img{
     object-fit: contain;
-    width: 750px;
-    height: 525px;
+    width: 970px;
+    border-radius: 20px;
+ 
+}
+.tags{
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+}
+.undisplayed{
+    display: none;
 }
 
 .outfit-description{

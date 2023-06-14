@@ -26,15 +26,61 @@ const ALL_OUTFITS_URL="http://localhost:8080/outfits"
 
 const Inspiration =()=>{
     const[data,setData]=useState([]);
+    const [selectedMood, setSelectedMood] = useState('Mood');
+    const [selectedStyle, setSelectedStyle] = useState('Style');
+    const [selectedSeason, setSelectedSeason] = useState('Season');
+    const [colors, setColors]=useState([]);
+
+
     
     useEffect(()=>{
+        let tem1, tem2;
+        let moodProp = selectedMood==="Mood"?'none' :selectedMood.toLowerCase() ;
+        let styleProp = selectedStyle==="Style"?'none' :selectedStyle.toLowerCase() ;
+        let seasonProp = selectedSeason==="Season"?'none' :selectedSeason.toLowerCase() ;
+        
         fetch(ALL_OUTFITS_URL)
         .then(res=>res.json())
         .then((result)=>{
-            setData(result);
+            if (moodProp!=='none'){
+                tem1=result.filter(item => item.mood === moodProp);
+            }else{
+                tem1=result
+            }
+            if (styleProp!=='none'){
+                tem2=tem1.filter(item => item.style === styleProp);
+            }else{
+                tem2=tem1
+            }
+            if (seasonProp!=='none'){
+                tem1=tem2.filter(item => item.season === seasonProp);
+            }
+            else{
+                tem1=tem2
+            }
+            if (colors.length>0){
+                setData(filterOutfitsByColor(tem1,colors))}
+            else{
+               setData(tem1); }    
         })
-    },[]);
+        
     
+    },[selectedMood,selectedSeason,selectedStyle,colors])
+    
+
+    function filterOutfitsByColor(clothes, neededColors) {
+        return clothes.filter(clothing => {
+            return clothing.colors.some(color => neededColors.includes(color));
+    });
+    }
+    const addColor = (color) => {
+        setColors((prevColors) => [...prevColors, color]);
+    };
+    
+    const removeColor = (color) => {
+        setColors((prevColors) => prevColors.filter((c) => c !== color));
+
+    };
 
     return(
             <div>
@@ -49,19 +95,19 @@ const Inspiration =()=>{
                     <div className="filters-container">
                         <div className="properties">
                             
-                            <select name="style" id="style">
+                            <select name="style" id="style" value={selectedStyle} onChange={(e) => setSelectedStyle(e.target.value)} >
                                 <option selected value="none">Style</option>
                                 <option value="casual">Casual</option>
                                 <option value="sport">Sport</option>
                                 <option value="formal">Formal</option>
                                 <option value="vintage">Vintage</option>
                                 <option value="grunge">Grunge</option>
-                                <option value="chic">Chic</option>
+                                <option value="chick">Chick</option>
                                 <option value="bohemian">Bohemian</option>
                                 <option value="preppy">Preppy</option>
                                 <option value="tomboy">Tomboy</option>
                             </select>
-                            <select name="mood" id="mood">
+                            <select name="mood" id="mood" value={selectedMood} onChange={(e) => setSelectedMood(e.target.value)}>
                                 <option selected value="none">Mood</option>
                                 <option value="sportic">Sportic</option>
                                 <option value="relaxing">Relaxing</option>
@@ -70,7 +116,7 @@ const Inspiration =()=>{
                                 <option value="sad">Sad</option>
                                 <option value="cheerful">Cheerful</option>
                             </select>
-                            <select name="season" id="season">
+                            <select name="season" id="season" value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
                                 <option selected value="none">Season</option>
                                 <option value="winter">Winter</option>
                                 <option value="spring">Spring</option>
@@ -80,23 +126,23 @@ const Inspiration =()=>{
                             </select>
                         </div>
                         <div className="colors">
-                            <ColorButton color="white" colorUrl={white} />
-                            <ColorButton color="beige" colorUrl={beige} />
-                            <ColorButton color="yellow" colorUrl={yellow} />
-                            <ColorButton color="pink" colorUrl={pink} />
-                            <ColorButton color="orange" colorUrl={orange} />
-                            <ColorButton color="brown" colorUrl={brown} />
-                            <ColorButton color="blue" colorUrl={blue} />
-                            <ColorButton color="green" colorUrl={green} />
-                            <ColorButton color="purple" colorUrl={purple} />
-                            <ColorButton color="red" colorUrl={red} />
-                            <ColorButton color="gray" colorUrl={gray}/>
-                            <ColorButton color="black" colorUrl={black} />
+                            <ColorButton color="white" colorUrl={white} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="beige" colorUrl={beige}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="yellow" colorUrl={yellow} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="pink" colorUrl={pink} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="orange" colorUrl={orange}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="brown" colorUrl={brown} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="blue" colorUrl={blue}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="green" colorUrl={green}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="purple" colorUrl={purple} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="red" colorUrl={red}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="gray" colorUrl={gray} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="black" colorUrl={black}addColor={addColor} removeColor={removeColor} />
 
-                            <ColorButton color="floral" colorUrl={floral} />
-                            <ColorButton color="striped" colorUrl={striped} />
-                            <ColorButton color="checkered" colorUrl={checkered} />
-                            <ColorButton color="animal" colorUrl={animal} />
+                            <ColorButton color="floral" colorUrl={floral} addColor={addColor} removeColor={removeColor}/>
+                            <ColorButton color="striped" colorUrl={striped}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="checkered" colorUrl={checkered}addColor={addColor} removeColor={removeColor} />
+                            <ColorButton color="animal" colorUrl={animal} addColor={addColor} removeColor={removeColor}/>
                                                         
                         </div>
                     </div>
@@ -109,7 +155,7 @@ const Inspiration =()=>{
                                 ) :(
                                 data.map((values)=>{
                                     return(
-                                        <OutfitContainer imageUrl={values.imageUrl} date={values.date} likes={values.likes}/>
+                                        <OutfitContainer outfit={values} />
                                     )
                                 }))
                             } 

@@ -67,7 +67,7 @@ const PublishForm =(props)=>{
             likes:0,
             image:imageUrl
         }
-        
+       
         fetch('http://localhost:8080/outfits/add',{
             method: 'post',
             mode: 'cors',
@@ -81,10 +81,8 @@ const PublishForm =(props)=>{
             if (response.status===200)
             alert("Outfit added!")
         })
-        
-
         closePubForm();
-      // Perform publishing logic here
+      
     };
     
     return(
@@ -125,7 +123,7 @@ const PublishForm =(props)=>{
                     <option value="formal">Formal</option>
                     <option value="vintage">Vintage</option>
                     <option value="grunge">Grunge</option>
-                    <option value="chic">Chic</option>
+                    <option value="chick">Chick</option>
                     <option value="bohemian">Bohemian</option>
                     <option value="preppy">Preppy</option>
                     <option value="tomboy">Tomboy</option>
