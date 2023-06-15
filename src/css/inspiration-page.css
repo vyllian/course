@@ -70,3 +70,18 @@ option{
 .empty-text-inspo h1{
     font-size: 52px;
 }
+
+.goUp{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding-right: 100px;
+    margin: 0;
+}
+.goUp-button{
+    background: none;
+    border: none;
+}
+.goUp-button img{
+    transform: scale(5);
+}
