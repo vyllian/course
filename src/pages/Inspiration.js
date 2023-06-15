@@ -20,6 +20,7 @@ import red from "../media/colors/red.png"
 import striped from "../media/colors/striped.jpg"
 import white from "../media/colors/white.jpg"
 import yellow from "../media/colors/yellow.png"
+import goUp from "../media/Up_Duo.svg"
 
 const ALL_OUTFITS_URL="http://localhost:8080/outfits"
 
@@ -79,8 +80,10 @@ const Inspiration =()=>{
     
     const removeColor = (color) => {
         setColors((prevColors) => prevColors.filter((c) => c !== color));
-
     };
+    const goUpFunc=()=>{
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    }
 
     return(
             <div>
@@ -161,6 +164,11 @@ const Inspiration =()=>{
                             } 
                     </div>
 
+                </div>
+                <div className="goUp svg">
+                    <button className="goUp-button" onClick={goUpFunc} >
+                        <img src={goUp} alt="go up"></img>
+                    </button>
                 </div>
                 <Footer/>
             </div>
