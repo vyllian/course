@@ -31,7 +31,9 @@ const Inspiration =()=>{
     const [selectedStyle, setSelectedStyle] = useState('Style');
     const [selectedSeason, setSelectedSeason] = useState('Season');
     const [colors, setColors]=useState([]);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] =useState(10);
+   
 
     
     useEffect(()=>{
@@ -39,7 +41,8 @@ const Inspiration =()=>{
         let moodProp = selectedMood==="Mood"?'none' :selectedMood.toLowerCase() ;
         let styleProp = selectedStyle==="Style"?'none' :selectedStyle.toLowerCase() ;
         let seasonProp = selectedSeason==="Season"?'none' :selectedSeason.toLowerCase() ;
-        
+       let temp =[];
+
         fetch(ALL_OUTFITS_URL)
         .then(res=>res.json())
         .then((result)=>{
@@ -60,15 +63,18 @@ const Inspiration =()=>{
                 tem1=tem2
             }
             if (colors.length>0){
-                setData(filterOutfitsByColor(tem1,colors))}
+                temp = filterOutfitsByColor(tem1,colors);}
             else{
-               setData(tem1); }    
+               temp =tem1; }    
+            const indexOfLastPost = currentPage*postsPerPage;
+            const indexOfFirstPost = indexOfLastPost-postsPerPage;
+            setData( temp.slice(indexOfFirstPost, indexOfLastPost));
         })
-        
+       
     
-    },[selectedMood,selectedSeason,selectedStyle,colors])
+    },[selectedMood,selectedSeason,selectedStyle,colors, currentPage])
     
-
+  
     function filterOutfitsByColor(clothes, neededColors) {
         return clothes.filter(clothing => {
             return clothing.colors.some(color => neededColors.includes(color));

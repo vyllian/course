@@ -3,7 +3,6 @@ import * as ReactDOMClient from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import App from './pages/App'
-import Gradient from './components/Gradient'
 import Inspiration from './pages/Inspiration';
 import Create from './pages/Create';
 
@@ -28,9 +27,4 @@ const router = createBrowserRouter([
   ]);
 const app=ReactDOMClient.createRoot(document.getElementById("app"))
 app.render( <RouterProvider router={router} />)
-
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
